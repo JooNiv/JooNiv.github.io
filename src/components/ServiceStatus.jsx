@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { useStatus } from '../hooks/useStatus'
 import { useBookings } from '../hooks/useBookings.jsx';
@@ -157,6 +157,11 @@ export const ServiceStatus = (props) => {
   };
   const tools = props.tools || [];
 
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (id) document.getElementById(id)?.scrollIntoView();
+  }, []);
+
   return (
     <div className="flex gap-6 flex-col sm:flex-col items-stretch text-on-white">
 
@@ -174,11 +179,11 @@ export const ServiceStatus = (props) => {
           Reservations can be viewed from this calendar. Note that making reservations through FiQCI is not currently possible.
         </p>
         <div>
-          <CButton id="tools" onClick={() => setBookingModalOpen(true)}>View Reservations</CButton>
+          <CButton onClick={() => setBookingModalOpen(true)}>View Reservations</CButton>
         </div>
       </div>
 
-      <div className='pt-[24px] flex flex-col gap-6 mb-0 justify-start'>
+      <div id="tools" className='pt-[24px] flex flex-col gap-6 mb-0 justify-start scroll-mt-24'>
         <h2 className='text-on-white'>Tools</h2>
         <p className='text-[16px] pb-0'>
           FiQCI provides software to help you get more out of the quantum computers.
