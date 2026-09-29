@@ -39,9 +39,16 @@ export const Footer = (props) => {
                     </div>
 
                     <div className="w-full md:w-auto text-left py-6">
-                        <p className="font-semibold text-[16px] pb-4">Customer support</p>
+                        <p className="font-semibold text-[16px] pb-4">Feedback</p>
                         <a href={`mailto:${props.feedbackEmail}`} className="text-base text-sky-800 hover:underline">
                             {props.feedbackEmail}
+                        </a>
+                    </div>
+
+                    <div className="w-full md:w-auto text-left py-6">
+                        <p className="font-semibold text-[16px] pb-4">Customer support</p>
+                        <a href={`mailto:${props.supportEmail}`} className="text-base text-sky-800 hover:underline">
+                            {props.supportEmail}
                         </a>
                     </div>
                 </div>
@@ -50,10 +57,7 @@ export const Footer = (props) => {
                 <div className='sm:mx-8 lg:mx-[100px] mx-2 min-[2600px]:mx-auto min-[2600px]:max-w-[50vw]'>
                     <div className="flex flex-col md:flex-row justify-between text-base items-center text-gray-600 space-y-2 md:space-y-0">
                         <p className="text-center md:text-left">
-                            © 2024 The FiQCI Consortium. Powered by{" "}
-                            <a href="https://jekyllrb.com/" className="underline">
-                                Jekyll
-                            </a>
+                            © 2024 The FiQCI Consortium.
                         </p>
                         <div className="flex space-x-4 text-gray-950">
                             <a href={prependBaseURL("/accessibility")} className="underline">

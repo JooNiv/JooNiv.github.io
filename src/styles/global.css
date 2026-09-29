@@ -216,3 +216,11 @@ c-card-actions::part(root) {
 c-modal::part(root) {
     width: var(--fiqci-modal-width, 600px);
 }
+
+.navigation-header-mobile c-button::part(root) {
+    width: 100%;
+}
+
+.navigation-header-mobile c-button::part(content) {
+    justify-items: end;
+}

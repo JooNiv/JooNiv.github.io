@@ -127,8 +127,7 @@ export const NavigationHeader = props => {
             </div>
             <div
                 ref={navRef}
-                className={`lg:hidden mx-1.5 mb-10 top-10 w-full flex flex-col justify-center items-left gap-2 navigation-header-mobile ${isOpen ? "block" : "hidden"
-                    }`}
+                className={`lg:hidden px-1 mb-10 top-10 flex-col items-stretch gap-2 navigation-header-mobile ${isOpen ? "flex" : "hidden"}`}
             >
                 {navigationButtons}
             </div>
