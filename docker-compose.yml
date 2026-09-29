@@ -1,0 +1,12 @@
+services:
+  fiqci-dev:
+    build: .
+    ports:
+      - "4321:4321"
+    volumes:
+      # Mount source code but keep dependencies and build output inside the container
+      - .:/app
+      - /app/node_modules
+      - /app/dist
+      - /app/.astro
+    working_dir: /app
