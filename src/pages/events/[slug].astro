@@ -1,6 +1,7 @@
 ---
 import Redirect from '../../components/Redirect.astro'
-import { getEventEntries } from '../../lib/site.js'
+import SearchMeta from '../../components/SearchMeta.astro'
+import { getEventEntries, formatDMY, stripHtml } from '../../lib/site.js'
 
 export async function getStaticPaths() {
   return (await getEventEntries()).map(entry => ({ params: { slug: entry.id }, props: { entry } }))
@@ -8,4 +9,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props
 ---
-<Redirect to={entry.data.link} label={entry.data.title} />
+<Redirect to={entry.data.link} label={entry.data.title}>
+  <SearchMeta slot="head" meta={{ title: entry.data.title, type: 'Event', date: formatDMY(entry.data.date), tags: entry.data.tags.join(', '), link: entry.data.link }} />
+  <div hidden data-pagefind-body>{entry.data.title} {stripHtml(entry.rendered?.html)} {entry.data.tags.join(' ')}</div>
+</Redirect>

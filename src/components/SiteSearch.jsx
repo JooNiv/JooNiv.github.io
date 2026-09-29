@@ -6,14 +6,7 @@ import {
 } from '../lib/cscUi.js';
 import { prependBaseURL } from '../utils/url';
 import { capitalizeFirstLetter } from "../utils/textUtils";
-import { newestResourceCall } from '../utils/resourceCalls';
-
-const style = {
-  "--_c-button-font-size": 14,
-  "--_c-button-min-width": 0,
-  "--_c-button-height": "auto",
-  "--_c-icon-color": "black"
-};
+import DOMPurify from 'dompurify';
 
 const styleArrow = {
   "--_c-button-font-size": 14,
@@ -22,105 +15,44 @@ const styleArrow = {
   "--_c-icon-color": "#004E84"
 };
 
-function normalizeQuery(query) {
-  query = query.toLowerCase()
-  if (!query.trim()) return ''; // empty or whitespace-only
-  if (query.endsWith('*')) return query;
+const TYPE_CATEGORIES = {
+  page: 'general',
+  blog: 'blogs',
+  news: 'blogs',
+  instructions: 'blogs',
+  'resource call': 'blogs',
+  post: 'blogs',
+  event: 'events'
+};
 
-  // Boost exact matches
-  //const exactLongMatch = `${'" ' + query + ' "'}^15`
-  //const exactLongMatchW = `${'" ' + query + ' "'}*^15`
-  const exactMatch = `${query}^10`;   // high boost for exact match
-  const wildcardMatch = `${query}*`;  // normal wildcard match
-  return `${exactMatch} ${wildcardMatch}`;
-}
-
-//Lunr multiplies a document's score by its boost, so the open call outranks
-//anything else matching the same terms while still needing to match at all
-const NEWEST_CALL_BOOST = 20;
-
-let storePromise;
-const loadStore = () => storePromise ??= fetch(prependBaseURL('/search-index.json')).then(res => res.json());
+let pagefindPromise;
+const loadPagefind = () => pagefindPromise ??= import(/* @vite-ignore */ prependBaseURL('/pagefind/pagefind.js'));
 
 async function searchContent(query) {
-  const store = await loadStore();
-  const queryStr = normalizeQuery(query);
-  const newestCall = newestResourceCall(store.blogs || []);
-
-  const { default: lunr } = await import('lunr');
-
-  const idx = lunr(function () {
-    this.ref('key');
-    this.field('title', { boost: 10 });
-    this.field('content', { boost: 2 });
-    this.field('type', { boost: 5 });
-    this.field('tags', { boost: 5 });
-    this.field('date');
-    this.field('link');
-
-    Object.values(store).flat().forEach(doc =>
-      this.add(doc, { boost: doc === newestCall ? NEWEST_CALL_BOOST : 1 })
-    );
-  });
-
-  const results = idx.search(queryStr);
-
   const categorizedResults = { general: [], blogs: [], events: [] };
+  if (!query.trim()) return categorizedResults;
 
-  const addResult = (item) => {
-    const resultItem = {
-      title: item.title,
-      url: item.url,
-      excerpt: item.content ? item.content.substring(0, 200).trim() + '...' : '',
-      type: item.type.toLowerCase(),
-      tags: item.tags,
-      date: item.date,
-      link: item.link
-    };
+  const pagefind = await loadPagefind();
+  const search = await pagefind.search(query.trim());
+  const pages = await Promise.all((search?.results || []).map(result => result.data()));
 
-    const typeMap = {
-      page: 'general',
-      blog: 'blogs',
-      news: 'blogs',
-      instructions: 'blogs',
-      'resource call': 'blogs',
-      post: 'blogs',
-      event: 'events'
-    };
-
-    const category = typeMap[resultItem.type.toLowerCase()];
-    if (category) {
-      categorizedResults[category].push(resultItem);
-    }
-    else {
-      categorizedResults['general'].push(resultItem)
-    }
-  };
-
-  if (results.length === 0) {
-    Object.values(store).flat()
-      .filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
-      .sort((a, b) => (b === newestCall) - (a === newestCall)) //keep the open call on top here too
-      .forEach(addResult);
-  } else {
-    results.forEach(result => {
-      const item = findItemByRef(result.ref, store);
-      if (item) addResult(item);
+  pages
+    .map(page => ({
+      title: page.meta.title,
+      url: page.url,
+      excerpt: DOMPurify.sanitize(page.excerpt, { ALLOWED_TAGS: ['mark'] }),
+      type: (page.meta.type || 'page').toLowerCase(),
+      tags: page.meta.tags ? page.meta.tags.split(', ') : [],
+      date: page.meta.date,
+      link: page.meta.link,
+      newestCall: page.meta.newest_call === 'true',
+    }))
+    .sort((a, b) => b.newestCall - a.newestCall)
+    .forEach(item => {
+      categorizedResults[TYPE_CATEGORIES[item.type] || 'general'].push(item);
     });
-  }
 
   return categorizedResults;
-}
-
-function findItemByRef(ref, store) {
-  const normalizedRef = ref
-    .replace('.html', '-html')
-    .replace('/publications/', 'publications-')
-    .replace('/events/', 'events-')
-    .replace('/pages/', 'pages-')
-    .toLowerCase();
-
-  return Object.values(store).flat().find(item => item.key.toLowerCase() === normalizedRef);
 }
 
 const SearchBar = ({ setResults, setQuery, query }) => {
@@ -146,13 +78,13 @@ const SearchBar = ({ setResults, setQuery, query }) => {
   }
 
   return (
-    <div className='flex flex-row w-full'>
-      <CIcon className='mx-3 self-center text-on-white' path={mdiMagnify} />
-      <form onSubmit={handleSubmit} className='pb-px w-full mr-3'>
+    <div className='flex flex-row items-center w-full min-h-[42px]'>
+      <span className='flex mx-3 text-on-white'><CIcon size={24} path={mdiMagnify} /></span>
+      <form onSubmit={handleSubmit} className='w-full mr-3'>
         <input onChange={handleSearchBar} className="w-full focus:outline-hidden" placeholder="Search..." type="text" id="search-box" name="query" value={query} />
       </form>
-      <CIcon className='mx-3 self-center text-on-white' onClick={() => handleClose()} path={mdiClose} />
-      <CButton onClick={handleSubmit} className='mr-3' style={style} ghost>Search</CButton>
+      <span className='flex mx-3 text-on-white cursor-pointer' onClick={() => handleClose()}><CIcon size={24} path={mdiClose} /></span>
+      <span className='flex mr-3'><CButton onClick={handleSubmit} size='small' ghost>Search</CButton></span>
     </div>
   )
 
@@ -212,7 +144,7 @@ const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) 
                     }
                   </div>
                   {type !== "general" &&
-                    <span>{item.excerpt}</span>
+                    <span dangerouslySetInnerHTML={{ __html: item.excerpt }} />
                   }
                 </li>
               ))}

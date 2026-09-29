@@ -10,8 +10,10 @@ const { to, text = 'This has moved to', label = to } = Astro.props
     <meta name="robots" content="noindex">
     <title>Redirecting…</title>
     <script is:inline define:vars={{ to }}>location.replace(to + location.hash);</script>
+    <slot name="head" />
   </head>
   <body>
     <p>{text} <a href={to}>{label}</a>.</p>
+    <slot />
   </body>
 </html>

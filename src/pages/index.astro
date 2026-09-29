@@ -6,7 +6,7 @@ import { AccessCards } from '../components/AccessCards.jsx'
 import { BlogCards } from '../components/BlogCards.jsx'
 import { EventCards } from '../components/EventCards.jsx'
 import { constants } from '../lib/constants.js'
-import { getPublications, getEvents } from '../lib/site.js'
+import { getPublications, getEvents, pageSearch } from '../lib/site.js'
 
 const home = constants['/']
 const about = constants['/about/']
@@ -19,7 +19,7 @@ const pitch = [
   'Available for quantum-accelerated research and development.',
 ]
 ---
-<BaseLayout title="Welcome">
+<BaseLayout title="Welcome" search={pageSearch('/')}>
   <Hero client:load {...home.hero} />
 
   <Section heading="Get Access"><AccessCards client:load cards={home.access_cards || []} /></Section>

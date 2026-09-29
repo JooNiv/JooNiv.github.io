@@ -2,10 +2,12 @@
 import BaseLayout from './BaseLayout.astro'
 import { Banner } from '../components/Banner.jsx'
 import { Breadcrumbs } from '../components/Breadcrumbs.jsx'
+import { pageSearch } from '../lib/site.js'
 
 const { title, description } = Astro.props
+const url = Astro.url.pathname.replace(/index\.html$/, '')
 ---
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} search={pageSearch(url)}>
   <div class="min-h-[250px]">
     <Banner title={title} />
   </div>

@@ -1,17 +1,19 @@
 ---
 import '../styles/global.css'
 import Head from '../components/Head.astro'
+import SearchMeta from '../components/SearchMeta.astro'
 import { NavigationHeader } from '../components/NavigationHeader.jsx'
 import { Footer } from '../components/Footer.jsx'
 import { SiteChrome } from '../components/SiteChrome.jsx'
 import { constants } from '../lib/constants.js'
 import { getNavItems } from '../lib/site.js'
 
-const { title, description, image } = Astro.props
+const { title, description, image, search } = Astro.props
 ---
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
   <Head title={title} description={description} image={image}>
+    {search && <SearchMeta meta={{ title, ...search.meta }} />}
     <slot name="head" />
   </Head>
   <body class="flex flex-col min-h-screen">
@@ -22,6 +24,7 @@ const { title, description, image } = Astro.props
 
     <main class="block flex-[1_0]" aria-label="Content">
       <slot />
+      {search?.text && <div hidden data-pagefind-body>{title} {search.text}</div>}
     </main>
 
     <footer class="bg-gray-100 text-gray-700 text-sm" id="footer">

@@ -6,7 +6,8 @@ import { BlogTags } from '../components/BlogTags.jsx'
 import { ReferencesAccordion } from '../components/ReferencesAccordion.jsx'
 import { ReadNext } from '../components/ReadNext.jsx'
 import { constants, authors } from '../lib/constants.js'
-import { getPublications } from '../lib/site.js'
+import { getPublications, publicationUrl, formatDMY } from '../lib/site.js'
+import { newestResourceCall } from '../utils/resourceCalls.js'
 
 const { entry } = Astro.props
 const { title, description, date, filters, tags, header } = entry.data
@@ -15,8 +16,17 @@ const type = filters.Type
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const displayDate = `${months[date.getUTCMonth()]} ${date.getUTCDate()}, ${date.getUTCFullYear()}`
 const publications = await getPublications()
+const indexed = !entry.data.hidden
+const search = indexed && {
+  meta: {
+    type: type || 'Post',
+    date: formatDMY(date),
+    tags: tags.join(', '),
+    newest_call: newestResourceCall(publications, p => p.filters?.Type)?.url === publicationUrl(entry.id),
+  },
+}
 ---
-<BaseLayout title={title} description={description} image={header.teaser}>
+<BaseLayout title={title} description={description} image={header.teaser} search={search}>
   <Fragment slot="head">
     <script is:inline>
       MathJax = {
@@ -48,15 +58,15 @@ const publications = await getPublications()
             </div>
           </div>
         </div>
-        <div class='col-span-4 max-w-[740px] lg:mr-[48px] 2xl:mr-0 2xl:justify-self-center' id="tags-data">
+        <div class='col-span-4 max-w-[740px] lg:mr-[48px] 2xl:mr-0 2xl:justify-self-center' id="tags-data" data-pagefind-body={indexed ? '' : undefined}>
           <BlogTags client:load tags={tags} />
-          <time datetime={date.toISOString()} itemprop="datePublished">{type} | {displayDate}</time>
+          <time datetime={date.toISOString()} itemprop="datePublished" data-pagefind-ignore>{type} | {displayDate}</time>
           <h1 class='pt-[8px] mt-0! text-4xl font-bold text-gray-900 mb-4'>{title}</h1>
           <div class="prose inline" itemprop="articleBody">
             <slot />
           </div>
           <br />
-          <div>
+          <div data-pagefind-ignore>
             <h2 class="text-[1.5em] font-bold">Give feedback!</h2>
             <br />
             <p class="text-gray-600">Feedback is greatly appreciated! You can send feedback directly to <a href={`mailto:${constants.feedback_email}`}> {constants.feedback_email} </a>.</p>

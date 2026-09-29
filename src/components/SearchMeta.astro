@@ -1,0 +1,6 @@
+---
+const { meta } = Astro.props
+---
+{Object.entries(meta).filter(([, value]) => value).map(([key, value]) => (
+  <meta data-pagefind-meta={`${key}[content]`} content={String(value)} />
+))}

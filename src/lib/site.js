@@ -11,7 +11,6 @@ const decodeEntities = text => text.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (ma
   code[0] !== '#' ? entities[code.toLowerCase()] ?? match
     : String.fromCodePoint(code[1].toLowerCase() === 'x' ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10)))
 export const stripHtml = html => decodeEntities((html || '').replace(/<[^>]*>/g, '').replace(/\n/g, ''))
-const slugify = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 const flattenStrings = value =>
   typeof value === 'string' ? [value]
     : Array.isArray(value) ? value.flatMap(flattenStrings)
@@ -55,34 +54,9 @@ export const getEvents = async () =>
     filters: filtersAsStrings(entry.data.filters),
   }))
 
-export const getSearchStore = async () => ({
-  blogs: (await getPublicationEntries()).filter(isVisible).map(entry => ({
-    key: slugify(publicationUrl(entry.id)),
-    title: entry.data.title,
-    content: stripHtml(entry.rendered?.html),
-    url: publicationUrl(entry.id),
-    tags: entry.data.tags,
-    type: entry.data.filters.Type || 'post',
-    date: formatDMY(entry.data.date),
-  })),
-  events: (await getEventEntries()).map(entry => ({
-    key: slugify(eventUrl(entry.id)),
-    title: entry.data.title,
-    content: stripHtml(entry.rendered?.html),
-    url: eventUrl(entry.id),
-    tags: entry.data.tags,
-    type: 'Event',
-    date: formatDMY(entry.data.date),
-    link: entry.data.link,
-  })),
-  pages: pages.map(page => ({
-    key: slugify(page.url) || 'index',
-    title: page.title,
-    content: stripHtml(flattenStrings(constants[page.url]).join(' ')),
-    url: page.url,
-    tags: [],
-    type: 'page',
-  })),
+export const pageSearch = url => ({
+  meta: { type: 'page' },
+  text: stripHtml(flattenStrings(constants[url]).join(' ')),
 })
 
 export const getNavItems = () =>
