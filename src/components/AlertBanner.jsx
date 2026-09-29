@@ -11,11 +11,11 @@ export const AlertBanner = ({ type, text, link }) => {
   const { bg, icon } = ALERT_STYLES[type?.toLowerCase()] ?? ALERT_STYLES.info;
   const content = (
     <>
-      <CIcon key={icon} path={icon} />
+      <span className='flex shrink-0'><CIcon key={icon} path={icon} /></span>
       <p className='text-[16px]'>
         {type ? text : 'Loading...'}
       </p>
-      {link ? <CIcon path={mdiChevronRight} className='ml-auto' /> : null}
+      {link ? <span className='flex shrink-0 ml-auto'><CIcon path={mdiChevronRight} /></span> : null}
     </>
   );
 
