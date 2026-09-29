@@ -1,0 +1,17 @@
+---
+const { to, text = 'This has moved to', label = to } = Astro.props
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="refresh" content={`0; url=${to}`}>
+    <link rel="canonical" href={to}>
+    <meta name="robots" content="noindex">
+    <title>Redirecting…</title>
+    <script is:inline define:vars={{ to }}>location.replace(to + location.hash);</script>
+  </head>
+  <body>
+    <p>{text} <a href={to}>{label}</a>.</p>
+  </body>
+</html>

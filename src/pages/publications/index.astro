@@ -1,0 +1,13 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro'
+import { Blogs } from '../../components/Blogs.jsx'
+import { getPublications } from '../../lib/site.js'
+import { pageByUrl } from '../../lib/pages.js'
+
+const page = pageByUrl('/publications/')
+---
+<PageLayout title={page.title}>
+  <div class="not-prose">
+    <Blogs client:load publications={await getPublications()} />
+  </div>
+</PageLayout>

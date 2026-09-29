@@ -1,0 +1,11 @@
+---
+import Redirect from '../../components/Redirect.astro'
+import { getEventEntries } from '../../lib/site.js'
+
+export async function getStaticPaths() {
+  return (await getEventEntries()).map(entry => ({ params: { slug: entry.id }, props: { entry } }))
+}
+
+const { entry } = Astro.props
+---
+<Redirect to={entry.data.link} label={entry.data.title} />

@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { SiteSearch } from '../../components/SiteSearch.jsx'
+import { pageByUrl } from '../../lib/pages.js'
+
+const page = pageByUrl('/search/')
+---
+<BaseLayout title={page.title}>
+  <div class="not-prose">
+    <SiteSearch client:only="react" />
+  </div>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import '../styles/global.css'
+import Head from '../components/Head.astro'
+import { NavigationHeader } from '../components/NavigationHeader.jsx'
+import { Footer } from '../components/Footer.jsx'
+import { SiteChrome } from '../components/SiteChrome.jsx'
+import { constants } from '../lib/constants.js'
+import { getNavItems } from '../lib/site.js'
+
+const { title, description, image } = Astro.props
+---
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <Head title={title} description={description} image={image}>
+    <slot name="head" />
+  </Head>
+  <body class="flex flex-col min-h-screen">
+    <SiteChrome client:load />
+    <header class="sticky top-0 bg-white z-40 min-h-16" id="navigation-header">
+      <NavigationHeader client:load logo={constants.logo} nav={getNavItems()} currentPath={Astro.url.pathname} />
+    </header>
+
+    <main class="block flex-[1_0]" aria-label="Content">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-100 text-gray-700 text-sm" id="footer">
+      <Footer
+        feedbackEmail={constants.feedback_email}
+        supporterLogoPath={constants.footer_icons}
+        funderLogoPath={constants.funder_logos}
+        copyright={constants.copyright}
+      />
+    </footer>
+  </body>
+</html>

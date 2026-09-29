@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Calendar from "react-calendar";
 import { format, parseISO } from "date-fns";
-import { CModal, CCard, CCardTitle, CCardContent, CSelect, CCardActions, CButton, CTextField } from '@cscfi/csc-ui-react';
+import { CModal, CCard, CCardTitle, CCardContent, CSelect, CCardActions, CButton, CTextField } from '../lib/cscUi.js';
 import { capitalizeFirstLetter } from "../utils/textUtils";
 import { useWindowSize } from "../utils/modalUtils";
 

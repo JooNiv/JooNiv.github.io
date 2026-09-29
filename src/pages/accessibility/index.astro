@@ -1,0 +1,35 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro'
+import { constants } from '../../lib/constants.js'
+import { pageByUrl } from '../../lib/pages.js'
+
+const page = pageByUrl('/accessibility/')
+const data = constants['/accessibility/']
+const contact = data.complaint.contact.info
+const contactLabels = { name: 'Name', division: 'Division', web: 'Website', email: 'Email', phone: 'Phone' }
+const linkClass = 'text-sky-800 hover:underline'
+---
+<PageLayout title={page.title}>
+  <div class="lg:grid lg:grid-cols-5 gap-8">
+    <div class="col-span-1"></div>
+    <div class="col-span-3 flex flex-col text-on-white my-[24px]">
+      <h2 class="mb-4">{data.title}</h2>
+      <p class="mb-4">{[data.general].flat().join('')} <a class={linkClass} href={`mailto:${constants.feedback_email}`}>{constants.feedback_email}</a></p>
+
+      <h2 class="mb-4">{data.status.title}</h2>
+      <p class="mb-4">{data.status.desc}</p>
+
+      <h2 class="mb-4">{data.complaint.title}</h2>
+      <p class="mb-4">{data.complaint.desc} <a class={linkClass} target="_blank" href={data.complaint.link.href}>{data.complaint.link.title}</a></p>
+
+      <h2 class="mb-4">{data.complaint.contact.title}</h2>
+      {Object.entries(contactLabels).filter(([key]) => contact[key]).map(([key, label]) => (
+        <p class="mb-2"><strong>{label}:</strong>{' '}
+          {key === 'web' ? <a class={linkClass} href={`https://${contact[key]}`} target="_blank" rel="noopener">{contact[key]}</a>
+            : key === 'email' ? <a class={linkClass} href={`mailto:${contact[key]}`}>{contact[key]}</a>
+              : contact[key]}
+        </p>
+      ))}
+    </div>
+  </div>
+</PageLayout>

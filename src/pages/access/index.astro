@@ -1,0 +1,13 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro'
+import { GetAccess } from '../../components/GetAccess.jsx'
+import { constants } from '../../lib/constants.js'
+import { pageByUrl } from '../../lib/pages.js'
+
+const page = pageByUrl('/access/')
+---
+<PageLayout title={page.title}>
+  <div class="not-prose">
+    <GetAccess client:load {...constants['/access/']} />
+  </div>
+</PageLayout>

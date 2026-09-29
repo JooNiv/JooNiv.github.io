@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { CAccordion, CAccordionItem } from '@cscfi/csc-ui-react';
+import { CAccordion, CAccordionItem } from '../lib/cscUi.js';
 
 export const ReferencesAccordion = () => {
     const [references, setReferences] = useState([]);
 
     useEffect(() => {
-        const observer = new MutationObserver(() => {
+        const extract = () => {
             const header = document.getElementById('references-') || document.getElementById('references');
             if (header) {
                 const list = header.nextElementSibling;
@@ -22,7 +22,9 @@ export const ReferencesAccordion = () => {
                     header.remove();
                 }
             }
-        });
+        };
+        extract();
+        const observer = new MutationObserver(extract);
 
         observer.observe(document.body, {
             childList: true,

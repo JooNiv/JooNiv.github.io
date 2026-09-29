@@ -1,9 +1,8 @@
 import React from 'react';
-import { CCard, CIcon, CCardContent } from '@cscfi/csc-ui-react';
+import { CCard, CIcon, CCardContent } from '../lib/cscUi.js';
 import { mdiArrowRight, mdiOpenInNew } from '@mdi/js';
 import { prependBaseURL, isExternal } from '../utils/url';
 
-import { useJsonApi } from '../hooks/useJsonApi';
 
 const AccessCardComponent = ({ title, href, teaser, description, links }) => {
     return (

@@ -1,0 +1,7 @@
+---
+import Redirect from '../components/Redirect.astro'
+import { getPublicationEntries, publicationUrl } from '../lib/site.js'
+
+const newest = (await getPublicationEntries()).filter(entry => (entry.data.filters.Type || '').includes('Resource Call')).at(-1)
+---
+<Redirect to={publicationUrl(newest.id)} text="Redirecting to the latest open call:" label={newest.data.title} />

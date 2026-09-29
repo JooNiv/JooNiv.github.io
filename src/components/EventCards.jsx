@@ -1,5 +1,5 @@
 import React from 'react';
-import { CCard, CIcon, CCardContent } from '@cscfi/csc-ui-react';
+import { CCard, CIcon, CCardContent } from '../lib/cscUi.js';
 import { mdiArrowRight, mdiOpenInNew } from '@mdi/js';
 import { prependBaseURL } from '../utils/url';
 
@@ -31,12 +31,12 @@ export const EventCardComponent = props => {
 
 
 
-export const EventCards = () => {
+export const EventCards = ({ events }) => {
     return (
         <div className="min-[2600px]:mx-auto min-[2600px]:max-w-[50vw]">
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              { SITE.events.slice(-4).reverse().map(event => <EventCardComponent {...event} />) }
+              { events.slice(-4).reverse().map(({ key, ...event }) => <EventCardComponent key={key} {...event} />) }
             </div>
             <div className="mt-4">
             <a

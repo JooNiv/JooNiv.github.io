@@ -1,5 +1,5 @@
 import React from 'react'
-import { CSpinner } from '@cscfi/csc-ui-react'
+import { CSpinner } from '../lib/cscUi.js'
 
 // Matches the Online/Offline pill footprint so cards don't jump.
 export const StatusPillLoading = () => (

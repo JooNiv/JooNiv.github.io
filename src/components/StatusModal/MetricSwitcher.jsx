@@ -1,5 +1,5 @@
 import React from 'react';
-import { CIcon, CSelect, COption } from '@cscfi/csc-ui-react';
+import { CIcon, CSelect, COption } from '../../lib/cscUi.js';
 import { generateMetricGradient } from '../../utils/generateGradient';
 import { formatMetricValue } from '../../utils/formatMetricValue';
 import { getMetricStatistics } from '../../utils/sidebarUtils';

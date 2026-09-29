@@ -1,0 +1,13 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro'
+import { ServiceStatus } from '../../components/ServiceStatus.jsx'
+import { constants } from '../../lib/constants.js'
+import { pageByUrl } from '../../lib/pages.js'
+
+const page = pageByUrl('/status/')
+---
+<PageLayout title={page.title}>
+  <div class="not-prose">
+    <ServiceStatus client:only="react" {...constants['/status/']} />
+  </div>
+</PageLayout>

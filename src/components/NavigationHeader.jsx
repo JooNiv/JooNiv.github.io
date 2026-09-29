@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { CButton, CIcon } from '@cscfi/csc-ui-react';
+import { CButton, CIcon } from '../lib/cscUi.js';
 import { mdiMagnify, mdiMenu } from '@mdi/js';
-import { useJsonApi } from '../hooks/useJsonApi'
 import { prependBaseURL } from '../utils/url';
 
 const style = {
@@ -12,7 +11,7 @@ const style = {
 };
 
 const NavButton = props => {
-    const isActive = window.location.pathname === props.href;
+    const isActive = props.currentPath === props.href;
 
     let styleClass = "text-on-white py-2"
     if (isActive) {
@@ -52,20 +51,17 @@ export const NavigationHeader = props => {
     const topBarRef = useRef(null);
     const toggleMenu = () => setIsOpen((prev) => !prev);
 
-    const pages = useJsonApi("api/pages.json")
-
     const navigationButtons = props.nav?.map(
         (item, index) => {
-            const targetPage = pages.find && pages.find(page => page.path === item.page)
             const buttonProps = {
                 title: item.title,
-                href: prependBaseURL(targetPage?.url),
-                key: index
+                href: prependBaseURL(item.href),
+                currentPath: props.currentPath,
             }
 
             return item.title !== "Search"
-                ? <NavButton {...buttonProps} />
-                : <NavSearchButton {...buttonProps} />
+                ? <NavButton key={index} {...buttonProps} />
+                : <NavSearchButton key={index} {...buttonProps} />
         }
     )
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
     CPagination, CCheckbox, CSelect, CButton, CModal, CCard,
     CCardTitle, CCardContent, CCardActions
-} from '@cscfi/csc-ui-react';
+} from '../lib/cscUi.js';
 import { BlogCardComponent } from './BlogCards';
 import { hideOldCalls } from '../utils/resourceCalls';
 
@@ -159,8 +159,8 @@ const BlogsList = ({ id, title, blogs, paginationOptions, handlePageChange, show
                         {blogs.slice(
                             (paginationOptions.currentPage - 1) * paginationOptions.itemsPerPage,
                             (paginationOptions.currentPage - 1) * paginationOptions.itemsPerPage + paginationOptions.itemsPerPage
-                        ).map(blog => (
-                            <BlogCardComponent key={blog.id} {...blog} />
+                        ).map(({ key, ...blog }) => (
+                            <BlogCardComponent key={key} {...blog} />
                         ))}
                     </div>
                     <CPagination
@@ -178,8 +178,8 @@ const BlogsList = ({ id, title, blogs, paginationOptions, handlePageChange, show
 };
 
 //Full blogs component
-export const Blogs = () => {
-    const blogs_dict = hideOldCalls(SITE.publications.filter(blog => blog.hidden != "true"))
+export const Blogs = ({ publications }) => {
+    const blogs_dict = hideOldCalls(publications.filter(blog => blog.hidden != "true"))
     const [isModalOpen, setIsModalOpen] = useState(false); //modal control
     const [filters, setFilters] = useState({
         "Skill level": { "Advanced": false, "Beginner": false },

@@ -1,0 +1,13 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro'
+import { Events } from '../../components/Events.jsx'
+import { getEvents } from '../../lib/site.js'
+import { pageByUrl } from '../../lib/pages.js'
+
+const page = pageByUrl('/events/')
+---
+<PageLayout title={page.title}>
+  <div class="not-prose">
+    <Events client:only="react" events={await getEvents()} />
+  </div>
+</PageLayout>

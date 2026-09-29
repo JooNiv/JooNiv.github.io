@@ -3,9 +3,9 @@ import React, { useCallback, useMemo, useState } from 'react'
 import { useStatus } from '../hooks/useStatus'
 import { useBookings } from '../hooks/useBookings.jsx';
 import { mdiInformation, mdiClose, mdiAlert, mdiRefresh, mdiArrowRight, mdiOpenInNew, mdiChevronLeft, mdiChevronRight } from '@mdi/js';
-import { CCard, CCardTitle, CCardContent, CIcon, CIconButton, CButton, CSelect, CAccordion, CAccordionItem } from '@cscfi/csc-ui-react';
+import { CCard, CCardTitle, CCardContent, CIcon, CIconButton, CButton, CSelect, CAccordion, CAccordionItem } from '../lib/cscUi.js';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Keyboard } from 'swiper';
+import { A11y, Keyboard } from 'swiper/modules';
 import 'swiper/css';
 import { prependBaseURL, isExternal } from '../utils/url';
 import { StatusModal } from './StatusModal/StatusModal';

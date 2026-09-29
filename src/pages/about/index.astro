@@ -1,0 +1,38 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro'
+import { constants } from '../../lib/constants.js'
+import { pageByUrl } from '../../lib/pages.js'
+
+const page = pageByUrl('/about/')
+const about = constants['/about/']
+const group = about['advisory-group']
+---
+<PageLayout title={page.title}>
+  <div class="my-[24px] grid grid-cols-1 lg:grid lg:grid-cols-2 gap-8">
+    <h1 class="text-3xl text-on-white font-bold col-span-1 lg:col-span-2">About FiQCI</h1>
+    <div class="col-span-1 lg:mr-10">
+      <p class="text-on-white">{about.desc}</p>
+      <br>
+      <p class="text-on-white">{about.mission}</p>
+      <br>
+      <p class="text-on-white">{about.maintain}</p>
+    </div>
+    <div class="col-span-1 lg:ml-10">
+      <h2 class="text-on-white pb-2">Scientific and Technical Advisory Group</h2>
+      <p class="text-on-white">{group.desc}</p>
+      <ul class="pt-2 pl-5 space-y-2 list-disc list-inside">
+        {group.people.map(member => <li class="text-on-white">{member.name}, {member.institution}, {member.country}</li>)}
+      </ul>
+
+      <h2 class="pt-4 pb-2 text-on-white">Management</h2>
+      <ul class="pt-0 pl-5 space-y-2 list-disc list-inside">
+        {group.management.people.map(mgr => <li class="text-on-white">{mgr.name}, {mgr.institution}, {mgr.title}</li>)}
+      </ul>
+
+      <h2 class="text-on-white pt-4 pb-2">Acknowledgement</h2>
+      <p class="text-on-white">{group.acknowledgement.desc}
+        <a class="underline text-on-white" href={group.acknowledgement['acknowledge-link-url']}>{group.acknowledgement['acknowledge-link-text']}</a>
+      </p>
+    </div>
+  </div>
+</PageLayout>

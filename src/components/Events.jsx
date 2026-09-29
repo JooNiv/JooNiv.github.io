@@ -2,13 +2,13 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
     CPagination, CCheckbox, CSelect, CButton, CModal, CCard,
     CCardTitle, CCardContent, CCardActions
-} from '@cscfi/csc-ui-react';
+} from '../lib/cscUi.js';
 import { EventCardComponent } from './EventCards';
 
 //Split events to past and upcoming ones
-const SplitEvents = () => {
+const SplitEvents = events => {
     let res = { upcoming: [], past: [] };
-    SITE.events.forEach(event => {
+    events.forEach(event => {
         (new Date(event.date) >= new Date() ? res.upcoming : res.past).push(event);
     });
     return res;
@@ -146,8 +146,8 @@ const EventsList = ({ id, title, events, paginationOptions, handlePageChange, sh
                         {events.slice(
                             (paginationOptions.currentPage - 1) * paginationOptions.itemsPerPage,
                             (paginationOptions.currentPage - 1) * paginationOptions.itemsPerPage + paginationOptions.itemsPerPage
-                        ).map(event => (
-                            <EventCardComponent key={event.id} {...event} />
+                        ).map(({ key, ...event }) => (
+                            <EventCardComponent key={key} {...event} />
                         ))}
                     </div>
                     <CPagination
@@ -166,8 +166,8 @@ const EventsList = ({ id, title, events, paginationOptions, handlePageChange, sh
 
 
 //Full events component
-export const Events = () => {
-    const events_dict = SplitEvents(); //get events
+export const Events = ({ events }) => {
+    const events_dict = SplitEvents(events); //get events
     const [isModalOpen, setIsModalOpen] = useState(false); //modal control
     const [filters, setFilters] = useState({
         "Skill level": { "Advanced": false, "Beginner": false },

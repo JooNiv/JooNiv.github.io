@@ -6,7 +6,11 @@ const pad = n => String(n).padStart(2, '0')
 export const formatDMY = date => `${date.getUTCDate()}.${date.getUTCMonth() + 1}.${date.getUTCFullYear()}`
 export const formatISODate = date => `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}-${pad(date.getUTCDate())}`
 
-export const stripHtml = html => (html || '').replace(/<[^>]*>/g, '').replace(/\n/g, '')
+const entities = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' }
+const decodeEntities = text => text.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (match, code) =>
+  code[0] !== '#' ? entities[code.toLowerCase()] ?? match
+    : String.fromCodePoint(code[1].toLowerCase() === 'x' ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10)))
+export const stripHtml = html => decodeEntities((html || '').replace(/<[^>]*>/g, '').replace(/\n/g, ''))
 const slugify = value => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 const flattenStrings = value =>
   typeof value === 'string' ? [value]

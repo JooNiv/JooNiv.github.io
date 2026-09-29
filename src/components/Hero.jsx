@@ -1,6 +1,6 @@
 import React from 'react';
-import { CButton, CIcon } from '@cscfi/csc-ui-react';
-import { mdiArrowRight, mdiArrowDown } from '@mdi/js';
+import { CButton, CIcon } from '../lib/cscUi.js';
+import { mdiArrowRight, mdiArrowDown, mdiOpenInNew } from '@mdi/js';
 import { prependBaseURL, isExternal, isAnchor } from '../utils/url';
 
 const style = {
@@ -17,12 +17,7 @@ const getIconPath = href => isExternal(href)
         : mdiArrowRight
 
 const ContentButton = props => {
-    const isActive = window.location.pathname === props.href;
-
-    var styleClass = "text-white text-sm sm:text-md py-3 wrap-break-word"
-    if (isActive) {
-        styleClass = styleClass
-    }
+    const styleClass = "text-white text-sm sm:text-md py-3 wrap-break-word"
 
     return (
         <div>
@@ -80,7 +75,7 @@ export const Hero = props => {
                     }
                     sizes="100vw"
                     alt="Hero background"
-                    fetchpriority="high"
+                    fetchPriority="high"
                     className="absolute inset-0 w-full h-full object-cover"
                 />
             </div>

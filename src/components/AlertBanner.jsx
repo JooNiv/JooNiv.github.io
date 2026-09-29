@@ -1,5 +1,5 @@
 import { mdiInformation, mdiClose, mdiAlert, mdiChevronRight } from '@mdi/js';
-import { CCard, CCardTitle, CCardContent, CIcon, CButton, CSelect } from '@cscfi/csc-ui-react';
+import { CCard, CCardTitle, CCardContent, CIcon, CButton, CSelect } from '../lib/cscUi.js';
 
 const ALERT_STYLES = {
   warning: { bg: 'bg-orange-200', icon: mdiAlert },

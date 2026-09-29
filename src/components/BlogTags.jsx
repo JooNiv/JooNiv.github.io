@@ -1,5 +1,5 @@
 import React from 'react';
-import { CTag, CTags } from '@cscfi/csc-ui-react';
+import { CTag, CTags } from '../lib/cscUi.js';
 
 export const BlogTags = ({ tags }) => {
     const handleTagClick = (tag) => {

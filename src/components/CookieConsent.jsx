@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { CModal, CCard, CCardTitle, CCardContent, CButton } from '@cscfi/csc-ui-react'
+import { CModal, CCard, CCardTitle, CCardContent, CButton } from '../lib/cscUi.js'
 
 export const CookieModal = props => {
     const [isModalOpen, setIsModalOpen] = useState(false);

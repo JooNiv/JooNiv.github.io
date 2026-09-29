@@ -3,7 +3,7 @@ import { mdiMagnify, mdiArrowRight, mdiClose } from '@mdi/js';
 import {
   CButton, CPagination, CIcon, CCheckbox, CModal, CCard,
   CCardTitle, CCardContent, CCardActions
-} from '@cscfi/csc-ui-react';
+} from '../lib/cscUi.js';
 import { prependBaseURL } from '../utils/url';
 import { capitalizeFirstLetter } from "../utils/textUtils";
 import { newestResourceCall } from '../utils/resourceCalls';
@@ -39,13 +39,15 @@ function normalizeQuery(query) {
 //anything else matching the same terms while still needing to match at all
 const NEWEST_CALL_BOOST = 20;
 
-async function searchContent(query, store) {
+let storePromise;
+const loadStore = () => storePromise ??= fetch(prependBaseURL('/search-index.json')).then(res => res.json());
+
+async function searchContent(query) {
+  const store = await loadStore();
   const queryStr = normalizeQuery(query);
   const newestCall = newestResourceCall(store.blogs || []);
 
-  // Lazily load lunr: it is ~30 KB and only needed once a search runs, so it
-  // is split into its own async chunk instead of shipping in vendors.js.
-  const { default: lunr } = await import(/* webpackChunkName: "lunr" */ 'lunr');
+  const { default: lunr } = await import('lunr');
 
   const idx = lunr(function () {
     this.ref('key');
@@ -136,7 +138,7 @@ const SearchBar = ({ setResults, setQuery, query }) => {
     event.preventDefault();
     const input = query;
     if (input.trim() !== "") {
-      const searchResults = await searchContent(input, STORE);
+      const searchResults = await searchContent(input);
       setResults(searchResults);
     } else {
       setResults({ general: [], blogs: [], events: [] });
@@ -359,7 +361,7 @@ export const SiteSearch = () => {
     let initSearch = params.get("search");
     if (initSearch && initSearch.trim() !== "") {
       setQuery(initSearch);
-      searchContent(initSearch, STORE).then(setResults);
+      searchContent(initSearch).then(setResults);
     }
     else{
       const state = getLocalStorageState('siteSearchState');
@@ -367,7 +369,7 @@ export const SiteSearch = () => {
         setFilters(state.filters);
         setQuery(state.query);
         if (state.query && state.query.trim() !== "") {
-          searchContent(state.query, STORE).then(setResults);
+          searchContent(state.query).then(setResults);
         }
       }
     }
@@ -377,13 +379,6 @@ export const SiteSearch = () => {
   useEffect(() => {
     setLocalStorageState('siteSearchState', { query, filters }, 30);
   }, [query, filters]);
-
-  const handleCheckboxChange = useCallback((option) => {
-    handleFilterChange({
-      ...filters,
-      [option]: !filters[option] //toggle the state
-    });
-  }, [filters, handleFilterChange]);
 
   const handleFilterChange = (newFilters, type) => {
     setFilters(newFilters);
@@ -397,6 +392,13 @@ export const SiteSearch = () => {
       setOptionsEvent(prev => ({ ...prev, currentPage: 1 }));
     }
   };
+
+  const handleCheckboxChange = useCallback((option) => {
+    handleFilterChange({
+      ...filters,
+      [option]: !filters[option] //toggle the state
+    });
+  }, [filters, handleFilterChange]);
 
   useEffect(() => {
     const applyFilters = (item) => {

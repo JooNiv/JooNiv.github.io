@@ -1,5 +1,5 @@
 import React from 'react';
-import { CCard, CIcon, CCardContent } from '@cscfi/csc-ui-react';
+import { CCard, CIcon, CCardContent } from '../lib/cscUi.js';
 import { mdiArrowRight } from '@mdi/js';
 import { prependBaseURL } from '../utils/url';
 import { hideOldCalls } from '../utils/resourceCalls';
@@ -26,12 +26,12 @@ export const BlogCardComponent = props => {
     );
 };
 
-export const BlogCards = () => {
+export const BlogCards = ({ publications }) => {
     return (
         <div className="min-[2600px]:mx-auto min-[2600px]:max-w-[50vw]">
             
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              { hideOldCalls(SITE.publications).slice(-4).reverse().map(blog => <BlogCardComponent {...blog} />) }
+              { hideOldCalls(publications).slice(-4).reverse().map(({ key, ...blog }) => <BlogCardComponent key={key} {...blog} />) }
             </div>
             <div className="mt-4">
                 <a

@@ -149,3 +149,34 @@ mjx-container {
 #blogView :not(pre) > code::after {
     content: none;
 }
+
+
+@layer base {
+    c-card {
+        background-color: var(--c-surface-raised);
+        padding-block: 24px;
+        gap: 24px;
+    }
+
+    c-card-content {
+        padding-inline: 28px;
+        gap: 24px;
+    }
+
+    c-checkbox {
+        display: flex;
+    }
+}
+
+c-card::part(root) {
+    padding: 0;
+    gap: inherit;
+    background: transparent;
+    color: inherit;
+    border: 0;
+}
+
+c-card-content::part(root) {
+    padding: 0;
+    gap: inherit;
+}

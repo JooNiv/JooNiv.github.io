@@ -11,7 +11,7 @@ import { LoadingBlock, ErrorBlock } from '../Loading';
 import {
     CCard, CCardTitle, CCardContent, CCardActions, CButton, CTabs,
     CTab, CTabItems, CTabItem
-} from '@cscfi/csc-ui-react';
+} from '../../lib/cscUi.js';
 import { object } from 'framer-motion/client';
 import { getDeviceMetricsConfig } from '../../config/deviceMetrics';
 
