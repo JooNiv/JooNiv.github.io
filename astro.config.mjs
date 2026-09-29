@@ -11,7 +11,10 @@ import { redirectPaths } from './src/lib/redirects.js'
 import rehypeTeaser from './src/lib/rehype-teaser.js'
 import rehypeMathPassthrough from './src/lib/rehype-math-passthrough.js'
 
-const excludedFromSitemap = [/\/api\//, /\/events\/.+\.html$/, /\/404\.html$/]
+const excludedFromSitemap = page => {
+  const path = new URL(page).pathname.replace(/(\.html|\/)$/, '')
+  return /^\/(api|events)\/.+/.test(path) || path === '/404' || redirectPaths.includes(path)
+}
 
 export default defineConfig({
   site: siteUrl,
@@ -20,15 +23,7 @@ export default defineConfig({
   integrations: [
     react(),
     pagefind(),
-    ...(isProductionSite
-      ? [sitemap({
-        filter: page => {
-          const { pathname } = new URL(page)
-          return !excludedFromSitemap.some(re => re.test(pathname))
-            && !redirectPaths.some(p => pathname.replace(/(\.html|\/)$/, '') === p)
-        },
-      })]
-      : []),
+    ...(isProductionSite ? [sitemap({ filter: page => !excludedFromSitemap(page) })] : []),
   ],
   markdown: {
     processor: unified({ remarkPlugins: [remarkMath], rehypePlugins: [rehypeMathPassthrough, rehypeTeaser] }),
