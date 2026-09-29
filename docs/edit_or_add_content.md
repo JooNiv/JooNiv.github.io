@@ -106,6 +106,17 @@ and
 
 The latter applies also for new supercomputer and emulation resources (`supercomputer_resources`, `emulation_resources`).
 
+On the access page the resources are listed in a sidebar grouped as quantum computers, supercomputers and emulation, and
+selecting one shows its details. Each resource gets its own link from its name, e.g. `/access/#vtt-q50`, while
+`/access/#quantum`, `/access/#super` and `/access/#emulation` open the first resource of a group. Optional fields:
+
+```yml
+    - name: VTT Q5 (Helmi)
+      id: helmi #Optional, overrides the link generated from the name (/access/#helmi)
+      retired: true #Optional, moves the resource to the collapsed "Retired" group
+      ...
+```
+
 ## New tool
 
 Tools are listed in the "Tools" section of the status page:
