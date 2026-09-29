@@ -155,7 +155,8 @@ cookie_consent:
           teaser: "Read more about LUMI-Q VLQ (IT4I website)"
           icon: mdiOpenInNew
     
-    - name: VTT Q5 (Helmi) - End of life
+    - name: VTT Q5 (Helmi)
+      retired: true
       desc: |-
         VTT Q5 (Helmi) was a superconducting quantum computer with 5 qubits in a star topology. It was operated by VTT, and was co-developed with IQM Quantum Computers. The device was decommissioned in 2026.
       image: "/assets/images/vtt-images/VTT_lab-2.webp"
