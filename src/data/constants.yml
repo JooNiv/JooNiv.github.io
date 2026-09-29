@@ -265,7 +265,7 @@ cookie_consent:
     link:
       title: here
       href: https://www.lumi-supercomputer.eu/lumi-service-status/
-  alerts: # Each alert renders as its own banner. type can be info, warning, or error
+  alerts: # Grouped into error, warning and info sections; type defaults to info
     - text: |-
         For estimating the runtime of a quantum job try out the FiQCI QPU resource estimator.
       type: info

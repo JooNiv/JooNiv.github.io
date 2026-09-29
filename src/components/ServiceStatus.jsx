@@ -11,7 +11,7 @@ import { prependBaseURL, isExternal } from '../utils/url';
 import { StatusModal } from './StatusModal/StatusModal';
 import { BookingModal } from './bookingCalendar.jsx';
 import { API_BASE_URL } from '../config/api.js';
-import { AlertBanner } from './AlertBanner.jsx';
+import { Alerts } from './Alerts.jsx';
 import { StatusPillLoading } from './Loading.jsx';
 
 const StatusCard = (props) => {
@@ -162,8 +162,6 @@ export const ServiceStatus = (props) => {
     setModalProps({ ...qc, devicesWithStatus });
     setModalOpen(true);
   };
-  // Support both a single `alert` object and a list of `alerts`.
-  const alerts = props.alerts ?? (props.alert ? [props.alert] : []);
   const tools = props.tools || [];
 
   return (
@@ -175,13 +173,7 @@ export const ServiceStatus = (props) => {
       <p className='text-[16px]'>
         {props.lumi?.desc} <a href={props.lumi?.link?.href} className="hover:underline text-sky-800">{props.lumi?.link?.title}</a>.
       </p>
-      {alerts.length > 0 && (
-        <div className='flex flex-col gap-3'>
-          {alerts.map((alert, index) => (
-            <AlertBanner key={index} {...alert} />
-          ))}
-        </div>
-      )}
+      <Alerts alerts={props.alerts} />
       <div className='pt-[24px] flex flex-col gap-6 mb-0 justify-start'>
         <h2 className='text-on-white'>Reservations</h2>
         <p>
