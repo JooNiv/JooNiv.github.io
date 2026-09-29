@@ -21,14 +21,14 @@ export const AlertBanner = ({ type, text, link }) => {
 
   if (link) {
     return (
-      <a href={link} className={`flex flex-row gap-4 w-full p-3 rounded-md ${bg} items-start sm:items-center cursor-pointer hover:shadow-md hover:opacity-90 transition-all`}>
+      <a href={link} className={`flex flex-row gap-4 w-full p-3 ${bg} items-start sm:items-center cursor-pointer hover:shadow-md hover:opacity-90 transition-all`}>
         {content}
       </a>
     );
   }
 
   return (
-    <div className={`flex flex-row gap-4 w-full p-3 rounded-md ${bg} items-start sm:items-center`}>
+    <div className={`flex flex-row gap-4 w-full p-3 ${bg} items-start sm:items-center`}>
       {content}
     </div>
   );

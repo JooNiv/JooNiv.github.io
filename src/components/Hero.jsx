@@ -4,10 +4,9 @@ import { mdiArrowRight, mdiArrowDown, mdiOpenInNew } from '@mdi/js';
 import { prependBaseURL, isExternal, isAnchor } from '../utils/url';
 
 const style = {
-    "--_c-button-font-size": 25,
-    "--_c-button-min-width": 0,
-    "--_c-button-height": "55px",
-    "--_c-icon-color": "white"
+    "--c-primary": "#0D2B53",
+    "--c-primary-hover": "var(--color-blue-600)",
+    "--spacing-toolbar": "52px",
 };
 
 const getIconPath = href => isExternal(href)
@@ -25,6 +24,7 @@ const ContentButton = props => {
                 className='hidden mb-[6px] sm:block w-min ml-0 mt-[10px] md:ml-0 mr-[16px] sm:ml-0 bg-[#0D2B53] hover:bg-blue-600'
                 no-radius
                 size="large"
+                style={style}
                 onClick={() => (window.location.href = prependBaseURL(props.href))}
             >
                 <p className={styleClass}>{props.title}</p>
@@ -34,6 +34,7 @@ const ContentButton = props => {
                 className='flex flex-1 mb-[6px] sm:hidden w-min ml-0 mt-[10px] mr-0 md:ml-0 bg-[#0D2B53] hover:bg-blue-600'
                 no-radius
                 size="default"
+                style={style}
                 onClick={() => (window.location.href = prependBaseURL(props.href))}
             >
                 <p className={styleClass}>{props.title}</p>
@@ -46,9 +47,9 @@ const ContentButton = props => {
 const Announcement = props =>
     <div className='flex flex-col justify-evenly py-[10px] pr-[40px] z-2 bg-[#FF9B66] min-h-[100px] px-4 md:pl-[28px]'>
         <p className='font-bold'>{props.text}</p>
-        <a href={props.link.href} className='w-fit flex items-center text-[#400001] hover:underline font-semibold'>
+        <a href={props.link.href} className='w-fit flex items-center gap-[10px] text-[#400001] hover:underline font-semibold'>
             {props.link.title}
-            <CIcon className='ml-[10px]' path={mdiArrowRight} />
+            <CIcon path={mdiArrowRight} />
         </a>
     </div>
 

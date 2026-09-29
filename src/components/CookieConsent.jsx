@@ -61,6 +61,7 @@ export const CookieModal = props => {
 
     return (
         <CModal
+            aria-label="Cookie consent"
             key={isModalOpen ? 'open' : 'closed'}
             style={{ 'overflow': 'auto' }}
             className='overflow-hidden!'
@@ -131,6 +132,7 @@ export const CookieModalManual = props => {
         <div>
             <a className='text-sky-800 hover:underline' onClick={() => setIsModalOpen(true)}>Open Cookie Consent popup</a>
             <CModal
+                aria-label="Cookie consent"
                 key={isModalOpen ? 'open' : 'closed'}
                 style={{ 'overflow': 'scroll' }}
                 className='overflow-hidden!'

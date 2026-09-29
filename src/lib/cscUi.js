@@ -1,4 +1,4 @@
-import './cscUiSquare.js'
+import './cscUiTheme.js'
 import * as csc from '@cscfi/csc-ui-react'
 
 const toTag = name => name.replace(/[A-Z]/g, (c, i) => (i ? '-' : '') + c.toLowerCase())

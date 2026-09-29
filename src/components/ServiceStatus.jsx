@@ -188,7 +188,9 @@ export const ServiceStatus = (props) => {
           VTT devices can at times be reserved. At these times the queue will be paused.
           Reservations can be viewed from this calendar. Note that making reservations through FiQCI is not currently possible.
         </p>
-        <CButton id="tools" className='w-32' onClick={() => setBookingModalOpen(true)}>View Reservations</CButton>
+        <div>
+          <CButton id="tools" onClick={() => setBookingModalOpen(true)}>View Reservations</CButton>
+        </div>
       </div>
 
       <div className='pt-[24px] flex flex-col gap-6 mb-0 justify-start'>
@@ -197,7 +199,7 @@ export const ServiceStatus = (props) => {
           FiQCI provides software to help you get more out of the quantum computers.
         </p>
         {tools.length > 0 && (
-          <CAccordion outlined className='mb-6'>
+          <CAccordion className='mb-6'>
             <CAccordionItem heading={`Software tools (click to expand)`} value="tools">
               <ToolCarousel tools={tools} />
             </CAccordionItem>

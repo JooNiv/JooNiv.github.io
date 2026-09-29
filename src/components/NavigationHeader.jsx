@@ -13,7 +13,7 @@ const style = {
 const NavButton = props => {
     const isActive = props.currentPath === props.href;
 
-    let styleClass = "text-on-white py-2"
+    let styleClass = "text-on-white text-sm py-2"
     if (isActive) {
         styleClass = styleClass + " underline underline-offset-8 decoration-2"
     }
@@ -39,7 +39,7 @@ const NavSearchButton = props => {
             style={style}
             onClick={() => (window.location.href = props.href)}
         >
-            <p className="text-on-white py-2">{props.title}</p>
+            <p className="text-on-white text-sm py-2">{props.title}</p>
             <CIcon className='text-on-white' path={mdiMagnify} />
         </CButton>
     );

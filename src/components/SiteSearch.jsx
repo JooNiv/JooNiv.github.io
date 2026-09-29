@@ -255,6 +255,7 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleCheckboxChang
 
   return (
     <CModal
+      aria-label="Search filters"
       key={isModalOpen ? 'open' : 'closed'}
 
       value={isModalOpen}

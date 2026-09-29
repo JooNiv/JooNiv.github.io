@@ -44,10 +44,6 @@ h2 {
         max-height: 75px !important;
     }
 
-    .navigation-header-buttons c-button::part(content) {
-        font-size: 16px !important;
-    }
-
     .navigation-header-buttons {
         gap: 24px !important;
     }
@@ -150,17 +146,38 @@ mjx-container {
     content: none;
 }
 
-
+/* csc-ui v4 styles its shadow parts; restore the v2 model where the host is the box, so utility classes on hosts apply. */
 @layer base {
     c-card {
-        background-color: var(--c-surface-raised);
-        padding-block: 24px;
-        gap: 24px;
+        --fiqci-card-gap: clamp(1rem, 2vw, 1.5rem);
+        display: flex;
+        flex-direction: column;
+        gap: var(--fiqci-card-gap);
+        padding-block: var(--fiqci-card-gap);
+        position: relative;
+        background-color: var(--c-white);
+        box-shadow: rgba(0, 0, 0, 0.15) 0 10px 20px, rgba(0, 0, 0, 0.2) 0 5px 5px;
+    }
+
+    c-card-title {
+        display: block;
+        padding-inline: var(--fiqci-card-gap, 24px);
+        color: var(--c-text-system);
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
     }
 
     c-card-content {
-        padding-inline: 28px;
-        gap: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--fiqci-card-gap, 24px);
+        padding-inline: var(--fiqci-card-gap, 24px);
+    }
+
+    c-card-actions {
+        display: block;
+        padding-inline: var(--fiqci-card-gap, 24px);
     }
 
     c-checkbox {
@@ -171,12 +188,40 @@ mjx-container {
 c-card::part(root) {
     padding: 0;
     gap: inherit;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
     background: transparent;
     color: inherit;
-    border: 0;
+}
+
+c-card-title::part(root) {
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
 }
 
 c-card-content::part(root) {
     padding: 0;
     gap: inherit;
+}
+
+c-card-actions::part(root) {
+    padding: 0;
+}
+
+c-modal::part(root) {
+    width: var(--fiqci-modal-width, 600px);
+}
+
+c-accordion::part(root),
+c-accordion-item::part(root) {
+    border: 0;
+}
+
+c-accordion-item::part(header) {
+    background-color: var(--c-primary-100);
 }

@@ -91,6 +91,7 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleFilterChange 
 
     return (
         <CModal
+            aria-label="Filters"
             key={isModalOpen ? 'open' : 'closed'}
             style={{ 'overflow': 'scroll' }}
             className='overflow-hidden!'

@@ -20,9 +20,10 @@ export const StatusModal = (props) => {
 
     return (
         <CModal
+            aria-label={props.name}
             key={size}
             id={`status-modal-${size}`}
-            style={{ overflow: 'scroll', "--_c-modal-width": '100vw' }}
+            style={{ overflow: 'scroll', "--fiqci-modal-width": modalWidths[size] }}
             width={modalWidths[size]}
             value={props.isModalOpen}
             dismissable
