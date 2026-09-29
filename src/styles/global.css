@@ -222,5 +222,5 @@ c-modal::part(root) {
 }
 
 .navigation-header-mobile c-button::part(content) {
-    justify-items: end;
+    justify-items: start;
 }
