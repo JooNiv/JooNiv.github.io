@@ -14,7 +14,7 @@ export const Breadcrumbs = ({ breadcrumbs }) => {
               <p className="font-semibold text-[14px] text-on-white">{label}</p>
             ) : (
               <a className="text-[14px]" href={href}>
-                <p className="!text-[#004E84]">{label} &gt;</p>
+                <p className="text-[#004E84]!">{label} &gt;</p>
               </a>
             )}
           </span>

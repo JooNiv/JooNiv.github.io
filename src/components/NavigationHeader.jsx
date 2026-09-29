@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import '@cscfi/csc-ui-react/css/theme.css';
 import { CButton, CIcon } from '@cscfi/csc-ui-react';
 import { mdiMagnify, mdiMenu } from '@mdi/js';
 import { useJsonApi } from '../hooks/useJsonApi'

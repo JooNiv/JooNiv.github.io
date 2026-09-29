@@ -63,7 +63,7 @@ export const CookieModal = props => {
         <CModal
             key={isModalOpen ? 'open' : 'closed'}
             style={{ 'overflow': 'auto' }}
-            className='!overflow-hidden'
+            className='overflow-hidden!'
             value={isModalOpen}
             dismissable
             onChangeValue={() => clickOutside()}
@@ -133,7 +133,7 @@ export const CookieModalManual = props => {
             <CModal
                 key={isModalOpen ? 'open' : 'closed'}
                 style={{ 'overflow': 'scroll' }}
-                className='!overflow-hidden'
+                className='overflow-hidden!'
                 value={isModalOpen}
                 dismissable
                 onChangeValue={() => closeModal()}

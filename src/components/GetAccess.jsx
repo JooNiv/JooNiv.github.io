@@ -12,7 +12,7 @@ const ResourceCard = ({ resource }) => {
                 />
             </div>
 
-            <div className="flex flex-col flex-grow pl-0 sm:pl-4">
+            <div className="flex flex-col grow pl-0 sm:pl-4">
                 <h3 className="text-xl font-bold pb-[14px]">{resource.name}</h3>
                 <p className="text-sm">{resource.desc.trim()}</p>
                 <div className="mt-2 space-y-2">

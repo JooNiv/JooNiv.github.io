@@ -81,8 +81,8 @@ export const ModalContent = (props) => {
     const layout = QC_LAYOUTS[props.device_id.toLowerCase()];
 
     return (
-        <CCard style={{ overflow: 'scroll' }} className='text-on-white !m-0 lg:mx-[100px] flex flex-col overflow-scroll lg:!overflow-auto max-h-[80vh] '>
-            <CCardTitle className="!font-bold text-on-white">{props.name}</CCardTitle>
+        <CCard style={{ overflow: 'scroll' }} className='text-on-white m-0! lg:mx-[100px] flex flex-col overflow-scroll lg:overflow-auto! max-h-[80vh] '>
+            <CCardTitle className="font-bold! text-on-white">{props.name}</CCardTitle>
             <CCardContent className="pb-[8px] sm:pb-[48px]">
                 <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 min-[2600px]:grid-cols-4 gap-8'>
                     <SideBar
@@ -174,7 +174,7 @@ export const ModalContent = (props) => {
                                             couplerMetricOptions={couplerMetricOptions}
                                         />
                                     ) : (
-                                        <pre className="text-xs overflow-auto bg-gray-100 p-2 rounded whitespace-pre-wrap break-words max-w-full">
+                                        <pre className="text-xs overflow-auto bg-gray-100 p-2 rounded-sm whitespace-pre-wrap wrap-break-word max-w-full">
                                             {viewState.rawDataType.value === 'calibration_data' &&
                                                 JSON.stringify(calibrationDataAll, null, 2)}
                                             {viewState.rawDataType.value === 'device_info' &&

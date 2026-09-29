@@ -65,9 +65,9 @@ const MetricTable = ({ ids, idMap, calibrationData, metrics, metricLabel }) => (
         <table>
             <thead>
                 <tr>
-                    <th className='!font-bold'>ID</th>
+                    <th className='font-bold!'>ID</th>
                     {metrics.map(metric => (
-                        <th className='!font-bold' key={metric}>{metricLabel(metric)}</th>
+                        <th className='font-bold!' key={metric}>{metricLabel(metric)}</th>
                     ))}
                 </tr>
             </thead>
@@ -92,9 +92,9 @@ const MultiQubitTable = ({ ids, idMap, calibrationData, metrics, metricLabel }) 
         <table>
             <thead>
                 <tr>
-                    <th className='!font-bold'>Metric</th>
+                    <th className='font-bold!'>Metric</th>
                     {ids.map(id => (
-                        <th className='!font-bold' key={id} title={idMap[id]}>{multiQubitLabel(id)}</th>
+                        <th className='font-bold!' key={id} title={idMap[id]}>{multiQubitLabel(id)}</th>
                     ))}
                 </tr>
             </thead>

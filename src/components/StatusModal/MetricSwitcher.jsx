@@ -67,7 +67,7 @@ export const MetricSwitcher = (props) => {
                                                 <input
                                                     type="number"
                                                     step="any"
-                                                    className="w-20 px-2 py-1 text-sm border rounded"
+                                                    className="w-20 px-2 py-1 text-sm border rounded-sm"
                                                     value={qubitInputValue}
                                                     onChange={(e) => {
                                                         setQubitInputValue(e.target.value);
@@ -102,7 +102,7 @@ export const MetricSwitcher = (props) => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="relative w-full h-6 rounded my-2"
+                                        <div className="relative w-full h-6 rounded-sm my-2"
                                             style={{
                                                 background: (() => {
                                                     const isLowerBetter = metricsState.qubitMetric.includes("error");
@@ -221,7 +221,7 @@ export const MetricSwitcher = (props) => {
                                                 <input
                                                     type="number"
                                                     step="any"
-                                                    className="w-20 px-2 py-1 text-sm border rounded"
+                                                    className="w-20 px-2 py-1 text-sm border rounded-sm"
                                                     value={couplerInputValue}
                                                     onChange={(e) => {
                                                         setCouplerInputValue(e.target.value);
@@ -256,7 +256,7 @@ export const MetricSwitcher = (props) => {
                                                 </span>
                                             </div>
                                         </div>
-                                        <div className="relative w-full h-6 rounded my-2"
+                                        <div className="relative w-full h-6 rounded-sm my-2"
                                             style={{
                                                 background: (() => {
                                                     const isLowerBetter = metricsState.couplerMetric.includes("error");

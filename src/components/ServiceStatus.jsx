@@ -79,7 +79,7 @@ const ToolCarousel = ({ tools }) => {
         modules={[A11y, Keyboard]}
         // Padding leaves room for the card shadows (Swiper clips overflow). The negative side margins stay within the
         // outlined accordion's 16px content padding so the Swiper doesn't cover its 2px outline.
-        className='!-mx-[14px] !px-5 !pt-2 !pb-10 !-mb-8'
+        className='mx-[-14px]! px-5! pt-2! pb-10! -mb-8!'
         spaceBetween={24}
         slidesPerView={1}
         breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
@@ -90,7 +90,7 @@ const ToolCarousel = ({ tools }) => {
         onResize={updateEdges}
       >
         {tools.map(tool => (
-          <SwiperSlide key={tool.name} className='!h-auto'>
+          <SwiperSlide key={tool.name} className='h-auto!'>
             <ToolCard {...tool} />
           </SwiperSlide>
         ))}

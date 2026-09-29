@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import '@cscfi/csc-ui-react/css/theme.css';
 import {
     CPagination, CCheckbox, CSelect, CButton, CModal, CCard,
     CCardTitle, CCardContent, CCardActions
@@ -94,12 +93,12 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleFilterChange 
         <CModal
             key={isModalOpen ? 'open' : 'closed'}
             style={{ 'overflow': 'scroll' }}
-            className='!overflow-hidden'
+            className='overflow-hidden!'
             value={isModalOpen}
             dismissable
             onChangeValue={event => setIsModalOpen(event.detail)}
         >
-            <CCard style={{ 'overflow': 'scroll' }} className='overflow-scroll lg:!overflow-hidden max-h-[80vh]'>
+            <CCard style={{ 'overflow': 'scroll' }} className='overflow-scroll lg:overflow-hidden! max-h-[80vh]'>
                 <CCardTitle>Filters</CCardTitle>
                 <CCardContent>
                     <EventFilters

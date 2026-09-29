@@ -1,0 +1,151 @@
+@import 'tailwindcss';
+@import '@cscfi/csc-ui/css/tokens.css';
+@import '@cscfi/csc-ui/css/tailwind-theme.css';
+@import './Calendar.css';
+
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --background-image-fiqci: url('/assets/images/FiQCI-banner.webp');
+}
+
+/* Keep Tailwind v3's gray-200 default border color. */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+.text-on-white {
+    color: #001C39;
+}
+
+.border-on-white {
+    border-color: #001C39;
+}
+
+h2 {
+    font-size: 28px !important;
+    @apply font-bold
+}
+
+@media (min-width: 1440px) {
+    .navigation-header-topbar {
+        height: 75px !important;
+        min-height: 75px !important;
+        max-height: 75px !important;
+    }
+
+    .navigation-header-buttons c-button::part(content) {
+        font-size: 16px !important;
+    }
+
+    .navigation-header-buttons {
+        gap: 24px !important;
+    }
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+
+:root {
+    --c-primary-100: #CCE6F1 !important;
+    --c-primary-200: #CCE6F1 !important;
+    --c-primary-300: #CCE6F1 !important;
+    --c-primary-400: #004E84 !important;
+    --c-primary-500: #004E84 !important;
+    --c-primary-600: #004E84 !important;
+    --c-primary-700: #004E84 !important;
+    --c-primary-800: #004E84 !important;
+    --c-primary-900: #001C39 !important;
+    --c-primary-rgb: 0, 78, 132 !important;
+    --c-font-family: 'Inter', sans-serif !important;
+}
+
+#blogView h1,
+#blogView h2,
+#blogView h3,
+#blogView h4,
+#blogView p,
+#blogView strong,
+#blogView table,
+#blogView th,
+#blogView td {
+    color: inherit !important;
+}
+
+#blogView a {
+    text-decoration: none;
+    @apply text-sky-800;
+    word-break: break-word;
+}
+
+#blogView a:hover {
+    @apply text-sky-800;
+    text-decoration: underline;
+}
+
+#read-next a {
+    color: #001C39 !important;
+}
+
+#references-accordion a {
+    word-break: break-word;
+}
+
+mjx-container {
+    @apply lg:overflow-x-hidden;
+    @apply max-w-[95%];
+    @apply lg:max-w-full;
+    @apply lg:pt-[2px];
+    @apply pt-0;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+}
+
+#blogView div:has(> table) {
+  overflow-x: auto;
+}
+
+#blogView table {
+    overflow-x: auto;
+}
+
+#blogView pre.astro-code {
+    background-color: #f6f8fa !important;
+    border-radius: 6px;
+    padding: 16px;
+    overflow-x: auto;
+    @apply scroll-smooth;
+}
+
+#tags-data {
+  overflow-x: hidden;
+}
+
+#blogView :not(pre) > code {
+    background-color: #eff1f3;
+    color: #24292e;
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.875em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    word-break: break-word;
+}
+
+#blogView :not(pre) > code::before,
+#blogView :not(pre) > code::after {
+    content: none;
+}

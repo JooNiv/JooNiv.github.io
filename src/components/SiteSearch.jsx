@@ -146,8 +146,8 @@ const SearchBar = ({ setResults, setQuery, query }) => {
   return (
     <div className='flex flex-row w-full'>
       <CIcon className='mx-3 self-center text-on-white' path={mdiMagnify} />
-      <form onSubmit={handleSubmit} className='pb-[1px] w-full mr-3'>
-        <input onChange={handleSearchBar} className="w-full focus:outline-none" placeholder="Search..." type="text" id="search-box" name="query" value={query} />
+      <form onSubmit={handleSubmit} className='pb-px w-full mr-3'>
+        <input onChange={handleSearchBar} className="w-full focus:outline-hidden" placeholder="Search..." type="text" id="search-box" name="query" value={query} />
       </form>
       <CIcon className='mx-3 self-center text-on-white' onClick={() => handleClose()} path={mdiClose} />
       <CButton onClick={handleSubmit} className='mr-3' style={style} ghost>Search</CButton>
@@ -231,7 +231,7 @@ const Filters = ({ filters, handleCheckboxChange }) => {
   return (
     <div className='text-on-white'>
       <p className='font-semibold mb-[16px]'>Results type</p>
-      <div className='-ml-[10px] flex flex-col'>
+      <div className='ml-[-10px] flex flex-col'>
         {Object.keys(filters).map(option => (
           <CCheckbox
             className='flex flex-col'

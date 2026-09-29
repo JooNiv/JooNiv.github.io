@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Calendar from "react-calendar";
-import "../stylesheets/Calendar.css";
 import { format, parseISO } from "date-fns";
 import { CModal, CCard, CCardTitle, CCardContent, CSelect, CCardActions, CButton, CTextField } from '@cscfi/csc-ui-react';
 import { capitalizeFirstLetter } from "../utils/textUtils";
@@ -29,9 +28,9 @@ export const BookingModal = (props) => {
             onChangeValue={e => props.setIsModalOpen(e.detail)}
         >
 
-            <CCard style={{ overflow: 'scroll' }} className='text-on-white !m-0 lg:mx-[100px] flex flex-col overflow-scroll lg:!overflow-auto max-h-[80vh] '>
-                <CCardTitle className="!font-bold text-on-white">{props.name}</CCardTitle>
-                <CCardContent className="!p-0 pb-[0px] sm:pb-[0px]">
+            <CCard style={{ overflow: 'scroll' }} className='text-on-white m-0! lg:mx-[100px] flex flex-col overflow-scroll lg:overflow-auto! max-h-[80vh] '>
+                <CCardTitle className="font-bold! text-on-white">{props.name}</CCardTitle>
+                <CCardContent className="p-0! pb-0 sm:pb-0">
                     <BookingCalendar bookingData={bookingData} />
                 </CCardContent>
                 <CCardActions>
@@ -242,28 +241,28 @@ const BookingCalendar = (props) => {
                 </div>
                 <div className="flex flex-row gap-4">
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#8fd144] border border-1 border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#8fd144] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
                         <p>Available</p>
                     </div>
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#f5422b] border border-1 border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#f5422b] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
                         <p>Fully Booked</p>
                     </div>
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#FFF3CD] border border-1 border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#FFF3CD] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
                         <p>Partially Reserved</p>
                     </div>
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#006edc] border border-1 border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#006edc] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
                         <p>Selected Day</p>
                     </div>
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#CCE6F1] border border-1 border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#CCE6F1] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
                         <p>Today</p>
                     </div>
                     {view === "Grid" && (
                         <div className="flex flex-row gap-2">
-                            <div className="bg-[#f87171] border border-1 border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                            <div className="bg-[#f87171] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
                             <p>Booked</p>
                         </div>
                     )}
@@ -271,7 +270,7 @@ const BookingCalendar = (props) => {
             </div>
             <div className="flex flex-col md:flex-row gap-6">
                 <Calendar
-                    className="min-[820px]:block hidden border p-4 shadow bg-white w-[40%] max-w-[400px]"
+                    className="min-[820px]:block hidden border p-4 shadow-sm bg-white w-[40%] max-w-[400px]"
                     value={selectedDate}
                     onClickDay={(value) => setSelectedDate(value)}
                     tileClassName={({ date }) => {
@@ -351,7 +350,7 @@ const BookingCalendar = (props) => {
                     
                 />
                 {selectedDate && (
-                    <div className="p-2 border flex-grow sm:p-4 min-[820px]:max-h-[314px] max-h-fit overflow-auto shadow bg-white">
+                    <div className="p-2 border grow sm:p-4 min-[820px]:max-h-[314px] max-h-fit overflow-auto shadow-sm bg-white">
                         <h3 className="text-on-white mb-2 font-bold">
                             Reservations on {format(selectedDate, "PPP")}
                         </h3>

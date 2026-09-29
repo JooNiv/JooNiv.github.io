@@ -225,22 +225,22 @@ export function QcLayout({ layout, metrics }) {
                                 type="button"
                                 onClick={() => zoomIn()}
                                 aria-label="Zoom in"
-                                className="w-8 h-8 flex items-center justify-center text-lg leading-none bg-slate-800/80 text-white rounded shadow hover:bg-slate-700"
+                                className="w-8 h-8 flex items-center justify-center text-lg leading-none bg-slate-800/80 text-white rounded-sm shadow-sm hover:bg-slate-700"
                             >+</button>
                             <button
                                 type="button"
                                 onClick={() => zoomOut()}
                                 aria-label="Zoom out"
-                                className="w-8 h-8 flex items-center justify-center text-lg leading-none bg-slate-800/80 text-white rounded shadow hover:bg-slate-700"
+                                className="w-8 h-8 flex items-center justify-center text-lg leading-none bg-slate-800/80 text-white rounded-sm shadow-sm hover:bg-slate-700"
                             >−</button>
                             <button
                                 type="button"
                                 onClick={() => resetTransform()}
                                 aria-label="Reset view"
-                                className="w-8 h-8 flex items-center justify-center text-base leading-none bg-slate-800/80 text-white rounded shadow hover:bg-slate-700"
+                                className="w-8 h-8 flex items-center justify-center text-base leading-none bg-slate-800/80 text-white rounded-sm shadow-sm hover:bg-slate-700"
                             >⟳</button>
                         </div>
-                        <TransformComponent wrapperClass="!w-full !h-full" contentClass="!w-full !h-full !flex !items-center !justify-center">
+                        <TransformComponent wrapperClass="w-full! h-full!" contentClass="w-full! h-full! flex! items-center! justify-center!">
                             <svg
                                 viewBox={viewBox}
                                 preserveAspectRatio="xMidYMid meet"
@@ -363,7 +363,7 @@ export function QcLayout({ layout, metrics }) {
                         top: getTooltipPosition().top + 'px'
                     }}
                 >
-                    <div className="bg-gradient-to-br from-slate-800 to-slate-900 backdrop-blur-sm border border-slate-600/50 rounded-lg p-3 shadow-xl">
+                    <div className="bg-linear-to-br from-slate-800 to-slate-900 backdrop-blur-xs border border-slate-600/50 rounded-lg p-3 shadow-xl">
                         {/* Header with icon */}
                         <div className="flex items-center gap-2 mb-2">
                             <div className={`w-2 h-2 rounded-full ${tooltip.type === 'node' ? 'bg-blue-400' : 'bg-purple-400'}`}></div>
@@ -374,7 +374,7 @@ export function QcLayout({ layout, metrics }) {
 
                         {/* Details with better formatting */}
                         {tooltip.details &&
-                            <div className="flex flex-col text-slate-300 text-md font-mono leading-relaxed bg-slate-900/50 rounded px-2 py-1.5 border border-slate-700/30">
+                            <div className="flex flex-col text-slate-300 text-md font-mono leading-relaxed bg-slate-900/50 rounded-sm px-2 py-1.5 border border-slate-700/30">
                                 <p className='font-bold'>
                                     {tooltip.details.split(":")[0]}
                                     {tooltip.details !== "Disabled" &&
@@ -390,7 +390,7 @@ export function QcLayout({ layout, metrics }) {
 
 
                         {/* Bottom accent */}
-                        <div className={`mt-2 h-0.5 rounded-full ${tooltip.type === 'node' ? 'bg-gradient-to-r from-blue-500 to-cyan-400' : 'bg-gradient-to-r from-purple-500 to-pink-400'}`}></div>
+                        <div className={`mt-2 h-0.5 rounded-full ${tooltip.type === 'node' ? 'bg-linear-to-r from-blue-500 to-cyan-400' : 'bg-linear-to-r from-purple-500 to-pink-400'}`}></div>
                     </div>
                 </motion.div>
             )}
