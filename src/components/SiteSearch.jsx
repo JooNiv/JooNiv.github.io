@@ -121,7 +121,7 @@ const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) 
   return (
     <div id={id} className='mb-8 text-on-white'>
       {results[type].length !== 0 &&
-        <div className='border-t-5'>
+        <div>
           <div className='flex flex-row pt-2'>
             <h1 className='mb-6 mr-3 text-xl font-bold'>{capitalizeFirstLetter(type)}</h1>
             {type !== "general" &&

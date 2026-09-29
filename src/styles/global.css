@@ -216,12 +216,3 @@ c-card-actions::part(root) {
 c-modal::part(root) {
     width: var(--fiqci-modal-width, 600px);
 }
-
-c-accordion::part(root),
-c-accordion-item::part(root) {
-    border: 0;
-}
-
-c-accordion-item::part(header) {
-    background-color: var(--c-primary-100);
-}
