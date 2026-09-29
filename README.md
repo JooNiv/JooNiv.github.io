@@ -3,6 +3,7 @@ This is the repository for building and maintaining the webpage for the Finnish 
 ## Contents
 - [About the site](#about-the-site)
 - [Running locally](#running-locally)
+  - [Using Docker](#using-docker)
   - [Requirements](#requirements)
   - [Install the Node packages](#install-the-node-packages)
   - [Serve with live reload](#serve-with-live-reload)
@@ -24,6 +25,22 @@ The previous version of the site, built with Jekyll and webpack, is available at
 # Running locally
 
 All of the commands shown are to be executed in the repository root.
+
+## Using Docker
+
+A [`Dockerfile`](./Dockerfile) and [`docker-compose.yml`](./docker-compose.yml) are provided to build and view the website locally using a containerised environment, without installing Node.js. To build the docker container use
+
+```sh
+docker compose build
+```
+
+And then run the container with:
+
+```sh
+docker compose up
+```
+
+The container builds the site once (so that search works) and then starts the dev server with live reload. The site is viewable at [`http://localhost:4321/`](http://localhost:4321/). After dependencies in `package.json` change, rebuild and start with `docker compose up --build --renew-anon-volumes` so the container gets a fresh `node_modules`.
 
 ## Requirements
 
