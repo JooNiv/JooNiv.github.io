@@ -45,7 +45,7 @@ const ContentButton = props => {
 };
 
 const Announcement = props =>
-    <div className='flex flex-col justify-evenly py-[10px] pr-[40px] z-2 bg-[#FF9B66] min-h-[100px] px-4 md:pl-[28px]'>
+    <div className='flex flex-col justify-evenly py-[10px] pr-[40px] z-2 bg-[#FF9B66] text-black min-h-[100px] px-4 md:pl-[28px]'>
         <p className='font-bold'>{props.text}</p>
         <a href={props.link.href} className='w-fit flex items-center gap-[10px] text-[#400001] hover:underline font-semibold'>
             {props.link.title}

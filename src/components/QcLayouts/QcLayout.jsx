@@ -225,19 +225,19 @@ export function QcLayout({ layout, metrics }) {
                                 type="button"
                                 onClick={() => zoomIn()}
                                 aria-label="Zoom in"
-                                className="w-8 h-8 flex items-center justify-center text-lg leading-none bg-slate-800/80 text-white rounded-sm shadow-sm hover:bg-slate-700"
+                                className="w-8 h-8 flex items-center justify-center text-lg leading-none bg-slate-800/80 text-white rounded-sm shadow-sm hover:bg-slate-700 dark:bg-slate-600/80 dark:hover:bg-slate-500"
                             >+</button>
                             <button
                                 type="button"
                                 onClick={() => zoomOut()}
                                 aria-label="Zoom out"
-                                className="w-8 h-8 flex items-center justify-center text-lg leading-none bg-slate-800/80 text-white rounded-sm shadow-sm hover:bg-slate-700"
+                                className="w-8 h-8 flex items-center justify-center text-lg leading-none bg-slate-800/80 text-white rounded-sm shadow-sm hover:bg-slate-700 dark:bg-slate-600/80 dark:hover:bg-slate-500"
                             >−</button>
                             <button
                                 type="button"
                                 onClick={() => resetTransform()}
                                 aria-label="Reset view"
-                                className="w-8 h-8 flex items-center justify-center text-base leading-none bg-slate-800/80 text-white rounded-sm shadow-sm hover:bg-slate-700"
+                                className="w-8 h-8 flex items-center justify-center text-base leading-none bg-slate-800/80 text-white rounded-sm shadow-sm hover:bg-slate-700 dark:bg-slate-600/80 dark:hover:bg-slate-500"
                             >⟳</button>
                         </div>
                         <TransformComponent wrapperClass="w-full! h-full!" contentClass="w-full! h-full! flex! items-center! justify-center!">

@@ -18,11 +18,11 @@ const StatusCard = (props) => {
   const isOnline = props.health;
   const { onClick, ...rest } = props
   return (
-    <CCard onClick={onClick} className='border-[0.2px] border-gray-100 rounded-none shadow-md hover:shadow-xl col-span-1 min-h-[236px]'>
-      <CCardTitle className='font-bold text-on-white text-[18px]'>
+    <CCard onClick={onClick} className='border-[0.2px] border-gray-100 dark:border-border rounded-none shadow-md hover:shadow-xl col-span-1 min-h-[236px]'>
+      <CCardTitle className='font-bold text-on-surface text-[18px]'>
         <p>{props.name}</p>
       </CCardTitle>
-      <CCardContent className='text-on-white'>
+      <CCardContent className='text-on-surface'>
         <div className="flex flex-col justify-start text-[14px]">
           <p className=""><strong>Qubits:</strong> {props.qubits}</p>
           <p className=""><strong>Basis gates:</strong> {props.basis}</p>
@@ -51,13 +51,13 @@ const StatusCard = (props) => {
 
 const ToolCard = ({ name, description, href }) => (
   <a href={prependBaseURL(href)} className='group block h-full' target="_blank" rel="noopener noreferrer">
-    <CCard className='border-[0.2px] border-gray-100 rounded-none shadow-md group-hover:shadow-xl h-full'>
-      <CCardTitle className='font-bold text-on-white text-[18px]'>
+    <CCard className='border-[0.2px] border-gray-100 dark:border-border rounded-none shadow-md group-hover:shadow-xl h-full'>
+      <CCardTitle className='font-bold text-on-surface text-[18px]'>
         <p>{name}</p>
       </CCardTitle>
-      <CCardContent className='text-on-white flex flex-col justify-between gap-4 text-[14px]'>
+      <CCardContent className='text-on-surface flex flex-col justify-between gap-4 text-[14px]'>
         <p>{description}</p>
-        <span className='text-sky-800 font-bold flex items-center gap-1 group-hover:underline'>
+        <span className='text-fiqci-link font-bold flex items-center gap-1 group-hover:underline'>
           Documentation <CIcon path={isExternal(href) ? mdiOpenInNew : mdiArrowRight} />
         </span>
       </CCardContent>
@@ -163,17 +163,17 @@ export const ServiceStatus = (props) => {
   }, []);
 
   return (
-    <div className="flex gap-6 flex-col sm:flex-col items-stretch text-on-white">
+    <div className="flex gap-6 flex-col sm:flex-col items-stretch text-on-surface">
 
       <p className='text-[16px] pt-[24px]'>
         {props.info}
       </p>
       <p className='text-[16px]'>
-        {props.lumi?.desc} <a href={props.lumi?.link?.href} className="hover:underline text-sky-800">{props.lumi?.link?.title}</a>.
+        {props.lumi?.desc} <a href={props.lumi?.link?.href} className="hover:underline text-fiqci-link">{props.lumi?.link?.title}</a>.
       </p>
       <Alerts alerts={props.alerts} />
       <div className='pt-[24px] flex flex-col gap-6 mb-0 justify-start'>
-        <h2 className='text-on-white'>Reservations</h2>
+        <h2 className='text-on-surface'>Reservations</h2>
         <p>
           VTT devices can at times be reserved. At these times the queue will be paused.
           Reservations can be viewed from this calendar. Note that making reservations through FiQCI is not currently possible.
@@ -184,7 +184,7 @@ export const ServiceStatus = (props) => {
       </div>
 
       <div id="tools" className='pt-[24px] flex flex-col gap-6 mb-0 justify-start scroll-mt-24'>
-        <h2 className='text-on-white'>Tools</h2>
+        <h2 className='text-on-surface'>Tools</h2>
         <p className='text-[16px] pb-0'>
           FiQCI provides software to help you get more out of the quantum computers.
         </p>
@@ -199,7 +199,7 @@ export const ServiceStatus = (props) => {
 
 
       <div className='flex flex-col sm:flex-row gap-4 sm:gap-20'>
-        <h2 className='text-on-white'>Devices</h2>
+        <h2 className='text-on-surface'>Devices</h2>
         <CSelect
           hideDetails={true}
           label={"Sort"}

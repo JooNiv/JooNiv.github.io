@@ -28,7 +28,7 @@ const EventFilters = ({ filters, handleFilterChange }) => {
     }, [filters, handleFilterChange]);
 
     return (
-        <div className='flex flex-col gap-[24px] text-on-white max-h-[85vh] mb-[12px] overflow-y-auto'>
+        <div className='flex flex-col gap-[24px] text-on-surface max-h-[85vh] mb-[12px] overflow-y-auto'>
             {Object.entries(filters).slice(0, -1).map(([category, options]) => ( //slice(0,-1) to exclude Theme
                 <FilterCategory
                     key={category}
@@ -282,7 +282,7 @@ export const Events = ({ events }) => {
 
     return (
 
-        <div className='lg:grid grid-cols-5 gap-8 text-on-white'>
+        <div className='lg:grid grid-cols-5 gap-8 text-on-surface'>
             <div className='mt-8 hidden lg:block lg:sticky lg:top-16 xl:top-20 lg:self-start z-10 scroll-smooth'>
                 <EventFilters filters={filters} handleFilterChange={handleFilterChange} />
             </div>

@@ -27,7 +27,7 @@ export default defineConfig({
   ],
   markdown: {
     processor: unified({ remarkPlugins: [remarkMath], rehypePlugins: [rehypeMathPassthrough, rehypeTeaser] }),
-    shikiConfig: { theme: 'github-light' },
+    shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' } },
   },
   vite: { plugins: [tailwindcss()] },
 })

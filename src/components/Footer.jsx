@@ -7,8 +7,8 @@ export const Footer = (props) => {
     const supporterLogos = props.supporterLogoPath
         ? <>
             <img src={prependBaseURL(`${props.supporterLogoPath}/footer-logo-vtt.webp`)} alt="VTT" className="h-12 w-auto" width="260" height="175" />
-            <img src={prependBaseURL(`${props.supporterLogoPath}/footer-logo-aalto.webp`)} alt="Aalto University" className="h-12 w-auto" width="190" height="175" />
-            <img src={prependBaseURL(`${props.supporterLogoPath}/footer-logo-csc.svg`)} alt="CSC" className="h-12 w-auto" width="300" height="189" />
+            <img src={prependBaseURL(`${props.supporterLogoPath}/footer-logo-aalto.webp`)} alt="Aalto University" className="h-12 w-auto dark:brightness-0 dark:invert" width="190" height="175" />
+            <img src={prependBaseURL(`${props.supporterLogoPath}/footer-logo-csc.svg`)} alt="CSC" className="h-12 w-auto dark:brightness-0 dark:invert" width="300" height="189" />
         </>
         : <></>
     const funderLogos = props.funderLogoPath
@@ -19,7 +19,7 @@ export const Footer = (props) => {
         : <></>
 
     return (
-        <div className="bg-gray-100 text-gray-700 text-sm">
+        <div className="bg-gray-100 dark:bg-surface-muted text-gray-700 dark:text-on-surface-muted text-sm">
             <div className='mx-2 sm:mx-8 lg:mx-[100px] min-[2600px]:mx-auto min-[2600px]:max-w-[50vw]'>
                 <div className="py-4 flex flex-wrap md:flex-nowrap justify-between items-start space-y-4 md:space-y-0">
                     <div className='flex content-evenly space-x-8'>
@@ -40,26 +40,26 @@ export const Footer = (props) => {
 
                     <div className="w-full md:w-auto text-left py-6">
                         <p className="font-semibold text-[16px] pb-4">Feedback</p>
-                        <a href={`mailto:${props.feedbackEmail}`} className="text-base text-sky-800 hover:underline">
+                        <a href={`mailto:${props.feedbackEmail}`} className="text-base text-fiqci-link hover:underline">
                             {props.feedbackEmail}
                         </a>
                     </div>
 
                     <div className="w-full md:w-auto text-left py-6">
                         <p className="font-semibold text-[16px] pb-4">Customer support</p>
-                        <a href={`mailto:${props.supportEmail}`} className="text-base text-sky-800 hover:underline">
+                        <a href={`mailto:${props.supportEmail}`} className="text-base text-fiqci-link hover:underline">
                             {props.supportEmail}
                         </a>
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-200 py-10">
+            <div className="bg-gray-200 dark:bg-surface-sunken py-10">
                 <div className='sm:mx-8 lg:mx-[100px] mx-2 min-[2600px]:mx-auto min-[2600px]:max-w-[50vw]'>
-                    <div className="flex flex-col md:flex-row justify-between text-base items-center text-gray-600 space-y-2 md:space-y-0">
+                    <div className="flex flex-col md:flex-row justify-between text-base items-center text-gray-600 dark:text-on-surface-muted space-y-2 md:space-y-0">
                         <p className="text-center md:text-left">
                             © 2024 The FiQCI Consortium.
                         </p>
-                        <div className="flex space-x-4 text-gray-950">
+                        <div className="flex space-x-4 text-gray-950 dark:text-on-surface">
                             <a href={prependBaseURL("/accessibility")} className="underline">
                                 Accessibility statements
                             </a>

@@ -47,7 +47,7 @@ const search = indexed && {
         <div class='col-span-full mt-4 pb-8'>
           <Breadcrumbs breadcrumbs={{ Home: '/', 'Blogs and instructions': '/publications/', [title]: '#' }} />
         </div>
-        <div class='col-span-1 pb-8 2xl:pb-0 lg:col-span-4 2xl:col-span-1 text-on-white text-[14px]' id="author-data">
+        <div class='col-span-1 pb-8 2xl:pb-0 lg:col-span-4 2xl:col-span-1 text-on-surface text-[14px]' id="author-data">
           <div class='flex flex-row gap-2 2xl:flex-row'>
             {author && author.name !== 'FiQCI Team' && (
               <img src={author.avatar} alt='Author' class='object-scale-down max-w-28' />
@@ -61,15 +61,15 @@ const search = indexed && {
         <div class='col-span-4 max-w-[740px] lg:mr-[48px] 2xl:mr-0 2xl:justify-self-center' id="tags-data" data-pagefind-body={indexed ? '' : undefined}>
           <BlogTags client:load tags={tags} />
           <time datetime={date.toISOString()} itemprop="datePublished" data-pagefind-ignore>{type} | {displayDate}</time>
-          <h1 class='pt-[8px] mt-0! text-4xl font-bold text-gray-900 mb-4'>{title}</h1>
-          <div class="prose inline" itemprop="articleBody">
+          <h1 class='pt-[8px] mt-0! text-4xl font-bold text-gray-900 dark:text-on-surface mb-4'>{title}</h1>
+          <div class="prose dark:prose-invert inline" itemprop="articleBody">
             <slot />
           </div>
           <br />
           <div data-pagefind-ignore>
             <h2 class="text-[1.5em] font-bold">Give feedback!</h2>
             <br />
-            <p class="text-gray-600">Feedback is greatly appreciated! You can send feedback directly to <a href={`mailto:${constants.feedback_email}`}> {constants.feedback_email} </a>.</p>
+            <p class="text-gray-600 dark:text-on-surface-muted">Feedback is greatly appreciated! You can send feedback directly to <a href={`mailto:${constants.feedback_email}`}> {constants.feedback_email} </a>.</p>
           </div>
           <div class="pt-8" id="references">
             <div id="references-accordion" class="not-prose">

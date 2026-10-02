@@ -12,6 +12,16 @@ const matomoUrl = import.meta.env.PUBLIC_MATOMO_URL
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script is:inline>
+    (() => {
+      const root = document.documentElement
+      const media = matchMedia('(prefers-color-scheme: dark)')
+      const stored = () => { try { return localStorage.getItem('theme') } catch { return null } }
+      const apply = () => { root.dataset.theme = stored() || (media.matches ? 'dark' : 'light') }
+      apply()
+      media.addEventListener('change', () => { if (!stored()) apply() })
+    })()
+  </script>
   <meta name="description" content={description || constants.description}>
   {isDevSite && <meta name="robots" content="noindex, nofollow">}
 

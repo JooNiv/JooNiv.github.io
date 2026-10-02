@@ -7,12 +7,12 @@ const page = pageByUrl('/accessibility/')
 const data = constants['/accessibility/']
 const contact = data.complaint.contact.info
 const contactLabels = { name: 'Name', division: 'Division', web: 'Website', email: 'Email', phone: 'Phone' }
-const linkClass = 'text-sky-800 hover:underline'
+const linkClass = 'text-fiqci-link hover:underline'
 ---
 <PageLayout title={page.title}>
   <div class="lg:grid lg:grid-cols-5 gap-8">
     <div class="col-span-1"></div>
-    <div class="col-span-3 flex flex-col text-on-white my-[24px]">
+    <div class="col-span-3 flex flex-col text-on-surface my-[24px]">
       <h2 class="mb-4">{data.title}</h2>
       <p class="mb-4">{[data.general].flat().join('')} <a class={linkClass} href={`mailto:${constants.feedback_email}`}>{constants.feedback_email}</a></p>
 

@@ -42,7 +42,7 @@ export const ReferencesAccordion = () => {
                 <ol>
                     {references.map((ref, idx) => (
                         <li key={idx} className='flex gap-2'>
-                            <span className="font-medium">[{idx + 1}]</span> <span className='text-gray-700' dangerouslySetInnerHTML={{ __html: ref }} />
+                            <span className="font-medium">[{idx + 1}]</span> <span className='text-gray-700 dark:text-on-surface-muted' dangerouslySetInnerHTML={{ __html: ref }} />
                         </li>
                     ))}
                 </ol>

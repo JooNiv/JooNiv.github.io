@@ -29,8 +29,8 @@ export const BookingModal = (props) => {
             onChangeValue={e => props.setIsModalOpen(e.detail)}
         >
 
-            <CCard style={{ overflow: 'scroll' }} className='text-on-white m-0! lg:mx-[100px] flex flex-col overflow-scroll lg:overflow-auto! max-h-[80vh] '>
-                <CCardTitle className="font-bold! text-on-white">{props.name}</CCardTitle>
+            <CCard style={{ overflow: 'scroll' }} className='text-on-surface m-0! lg:mx-[100px] flex flex-col overflow-scroll lg:overflow-auto! max-h-[80vh] '>
+                <CCardTitle className="font-bold! text-on-surface">{props.name}</CCardTitle>
                 <CCardContent className="p-0! pb-0 sm:pb-0">
                     <BookingCalendar bookingData={bookingData} />
                 </CCardContent>
@@ -242,28 +242,28 @@ const BookingCalendar = (props) => {
                 </div>
                 <div className="flex flex-row gap-4">
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#8fd144] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#8fd144] border border border-gray-600 dark:border-border-strong self-center w-[15px] h-[15px]" ></div>
                         <p>Available</p>
                     </div>
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#f5422b] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#f5422b] border border border-gray-600 dark:border-border-strong self-center w-[15px] h-[15px]" ></div>
                         <p>Fully Booked</p>
                     </div>
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#FFF3CD] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#FFF3CD] border border border-gray-600 dark:border-border-strong self-center w-[15px] h-[15px]" ></div>
                         <p>Partially Reserved</p>
                     </div>
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#006edc] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#006edc] border border border-gray-600 dark:border-border-strong self-center w-[15px] h-[15px]" ></div>
                         <p>Selected Day</p>
                     </div>
                     <div className="min-[820px]:flex hidden flex-row gap-2">
-                        <div className="bg-[#CCE6F1] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                        <div className="bg-[#CCE6F1] border border border-gray-600 dark:border-border-strong self-center w-[15px] h-[15px]" ></div>
                         <p>Today</p>
                     </div>
                     {view === "Grid" && (
                         <div className="flex flex-row gap-2">
-                            <div className="bg-[#f87171] border border border-gray-600 self-center w-[15px] h-[15px]" ></div>
+                            <div className="bg-[#f87171] border border border-gray-600 dark:border-border-strong self-center w-[15px] h-[15px]" ></div>
                             <p>Booked</p>
                         </div>
                     )}
@@ -271,7 +271,7 @@ const BookingCalendar = (props) => {
             </div>
             <div className="flex flex-col md:flex-row gap-6">
                 <Calendar
-                    className="min-[820px]:block hidden border p-4 shadow-sm bg-white w-[40%] max-w-[400px]"
+                    className="min-[820px]:block hidden border p-4 shadow-sm bg-surface w-[40%] max-w-[400px]"
                     value={selectedDate}
                     onClickDay={(value) => setSelectedDate(value)}
                     tileClassName={({ date }) => {
@@ -351,8 +351,8 @@ const BookingCalendar = (props) => {
                     
                 />
                 {selectedDate && (
-                    <div className="p-2 border grow sm:p-4 min-[820px]:max-h-[314px] max-h-fit overflow-auto shadow-sm bg-white">
-                        <h3 className="text-on-white mb-2 font-bold">
+                    <div className="p-2 border grow sm:p-4 min-[820px]:max-h-[314px] max-h-fit overflow-auto shadow-sm bg-surface">
+                        <h3 className="text-on-surface mb-2 font-bold">
                             Reservations on {format(selectedDate, "PPP")}
                         </h3>
                         {view === "List" ? (
@@ -363,7 +363,7 @@ const BookingCalendar = (props) => {
                                         (b) => (
                                             <li
                                                 key={b.id}
-                                                className="p-2 border rounded-lg cursor-pointer hover:bg-gray-100"
+                                                className="p-2 border rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-surface-muted"
                                                 onClick={() => setSelectedBooking(b)}
                                             >
                                                 <span className="font-medium">{capitalizeFirstLetter(b.device)}</span> -  {capitalizeFirstLetter(b.type)} (
@@ -377,19 +377,19 @@ const BookingCalendar = (props) => {
                             <div className="flex flex-row">
                                 {/* Hour labels on the left */}
                                 <div className="flex flex-col mr-2 justify-between" >
-                                    <div key={0} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: '#374151', paddingRight: 4 }}>
+                                    <div key={0} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
                                         {"00".toString().padStart(2, '0')}
                                     </div>
-                                    <div key={6} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: '#374151', paddingRight: 4 }}>
+                                    <div key={6} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
                                         {"06".toString().padStart(2, '0')}
                                     </div>
-                                    <div key={12} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: '#374151', paddingRight: 4 }}>
+                                    <div key={12} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
                                         {"12".toString().padStart(2, '0')}
                                     </div>
-                                    <div key={18} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: '#374151', paddingRight: 4 }}>
+                                    <div key={18} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
                                         {"18".toString().padStart(2, '0')}
                                     </div>
-                                    <div key={23} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: '#374151', paddingRight: 4 }}>
+                                    <div key={23} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
                                         {"23".toString().padStart(2, '0')}
                                     </div>
                                 </div>
@@ -403,7 +403,7 @@ const BookingCalendar = (props) => {
                                                     const bookings = reservedMinutes[i];
                                                     let background;
                                                     if (bookings.length === 0) {
-                                                        background = '#e5e7eb';
+                                                        background = 'light-dark(#e5e7eb, var(--c-slate-700))';
                                                     } else {
                                                         background = '#f87171';
                                                     }
@@ -421,7 +421,7 @@ const BookingCalendar = (props) => {
                                                                 height: '10px',
                                                                 cursor: bookings.length ? 'pointer' : 'default',
                                                                 position: 'relative',
-                                                                borderTop: '1px solid white',
+                                                                borderTop: '1px solid var(--c-surface)',
                                                             }}
                                                             onMouseEnter={bookings.length ? (e) => { setSelectedBooking(bookings.length === 1 ? bookings[0] : bookings); showTooltip(e, tooltipContent); } : undefined}
                                                             onMouseLeave={() => { setSelectedBooking(null); hideTooltip(); }}

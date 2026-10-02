@@ -7,17 +7,17 @@ import { hideOldCalls } from '../utils/resourceCalls';
 export const BlogCardComponent = props => {
     const type = props?.filters?.Type;
     return (
-        <CCard className="flex flex-auto flex-col flex-wrap border border-gray-200 rounded-none shadow-md overflow-hidden hover:shadow-lg p-0 m-0 w-full"> {/* Adjusted card width */}
+        <CCard className="flex flex-auto flex-col flex-wrap border border-gray-200 dark:border-border rounded-none shadow-md overflow-hidden hover:shadow-lg p-0 m-0 w-full"> {/* Adjusted card width */}
             <img src={props.teaser} alt="Logo" className="w-full h-28 scale-125 object-cover m-0 p-0" />
             <CCardContent className="flex flex-col border-none m-0">
                 <div>
                     <a href={props.url.split(".")[0]}
-                        className="text-on-white hover:underline font-bold">
+                        className="text-on-surface hover:underline font-bold">
                         <div>
                             {props.title.length >= 89 ? props.title.slice(0, 90) + "..." : props.title}
                         </div>
                     </a>
-                    <p className="text-sm text-gray-500 pb-2 pt-1">
+                    <p className="text-sm text-gray-500 dark:text-on-surface-muted pb-2 pt-1">
                         {type} | {props.date}
                     </p>
                 </div>
@@ -36,7 +36,7 @@ export const BlogCards = ({ publications }) => {
             <div className="mt-4">
                 <a
                     href={prependBaseURL("/publications/")}
-                    className="text-sky-800 hover:underline font-bold"
+                    className="text-fiqci-link hover:underline font-bold"
                 >
                     <div className="mx-2 sm:mx-0 flex items-center gap-3">
                         <div className="text-sm">All blogs and instructions</div>

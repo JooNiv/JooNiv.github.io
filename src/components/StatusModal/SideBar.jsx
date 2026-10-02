@@ -73,7 +73,7 @@ export const SideBar = (props) => {
     }, [metricsState.couplerMetric, metricsState.thresholdCoupler]);
 
     return (
-        <div className='flex flex-col pb-4 mr-[50px] border-b-2 md:border-b-0 md:border-r-2 border-gray-400 col-span-1'>
+        <div className='flex flex-col pb-4 mr-[50px] border-b-2 md:border-b-0 md:border-r-2 border-gray-400 dark:border-border-strong col-span-1'>
             <DeviceStatus deviceData={deviceData} devicesWithStatus={devicesWithStatus} statusLoading={statusLoading} />
 
             {(activeTab === "layout" || activeTab === "graphical") && (

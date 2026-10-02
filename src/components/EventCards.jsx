@@ -5,19 +5,19 @@ import { prependBaseURL } from '../utils/url';
 
 export const EventCardComponent = props => {
     return (
-        <CCard className="flex flex-auto flex-col border border-gray-200 rounded-none shadow-md hover:shadow-lg p-0 m-0"> {/* Adjusted card width */}
+        <CCard className="flex flex-auto flex-col border border-gray-200 dark:border-border rounded-none shadow-md hover:shadow-lg p-0 m-0"> {/* Adjusted card width */}
             <CCardContent className="flex flex-col border-none m-0">
                 <div className='my-3'>
                     <a
                         href={props.url}
-                        className="text-md text-on-white hover:underline font-bold"
+                        className="text-md text-on-surface hover:underline font-bold"
                     >
-                        <div className='flex justify-between text-on-white'>
+                        <div className='flex justify-between text-on-surface'>
                             {props.title}
                             <CIcon className="text-lg" path={mdiOpenInNew} />
                         </div>
                     </a>
-                    <p className="text-sm text-gray-500 pb-2 pt-1">
+                    <p className="text-sm text-gray-500 dark:text-on-surface-muted pb-2 pt-1">
                         {props.content.split(":")[0]}
                     </p>
                     <p>
@@ -41,7 +41,7 @@ export const EventCards = ({ events }) => {
             <div className="mt-4">
             <a
                     href={prependBaseURL("/events/")}
-                    className="text-sky-800 hover:underline font-bold"
+                    className="text-fiqci-link hover:underline font-bold"
                 >
                     <div className="mx-2 sm:mx-0 flex items-center gap-3">
                         <div className="text-sm">All events</div>

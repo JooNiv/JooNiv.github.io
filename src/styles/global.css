@@ -5,12 +5,33 @@
 
 @plugin '@tailwindcss/typography';
 
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 @theme {
   --font-sans:
     'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 
   --background-image-fiqci: url('/assets/images/FiQCI-banner.webp');
+}
+
+@theme inline {
+  --color-fiqci-link: var(--fiqci-link);
+}
+
+:root {
+  --fiqci-link: var(--color-sky-800);
+}
+
+[data-theme='dark'] {
+  --fiqci-link: var(--color-sky-300);
+  --c-primary-hover: var(--c-primary-50);
+}
+
+[data-theme='dark'] c-button:not([ghost], [text], [outlined], [danger], [inverted]) {
+  --c-primary: #004E84;
+  --c-on-primary: var(--c-white);
+  --c-primary-hover: var(--color-blue-600);
 }
 
 /* Keep Tailwind v3's gray-200 default border color. */
@@ -22,14 +43,14 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
-}
 
-.text-on-white {
-    color: #001C39;
-}
-
-.border-on-white {
-    border-color: #001C39;
+  [data-theme='dark'] *,
+  [data-theme='dark'] ::after,
+  [data-theme='dark'] ::before,
+  [data-theme='dark'] ::backdrop,
+  [data-theme='dark'] ::file-selector-button {
+    border-color: var(--c-border);
+  }
 }
 
 h2 {
@@ -84,17 +105,17 @@ h2 {
 
 #blogView a {
     text-decoration: none;
-    @apply text-sky-800;
+    @apply text-fiqci-link;
     word-break: break-word;
 }
 
 #blogView a:hover {
-    @apply text-sky-800;
+    @apply text-fiqci-link;
     text-decoration: underline;
 }
 
 #read-next a {
-    color: #001C39 !important;
+    color: var(--c-on-surface) !important;
 }
 
 #references-accordion a {
@@ -141,6 +162,20 @@ mjx-container {
     word-break: break-word;
 }
 
+[data-theme='dark'] #blogView pre.astro-code {
+    background-color: #161b22 !important;
+}
+
+[data-theme='dark'] .astro-code,
+[data-theme='dark'] .astro-code span {
+    color: var(--shiki-dark) !important;
+}
+
+[data-theme='dark'] #blogView :not(pre) > code {
+    background-color: #2d333b;
+    color: #e6edf3;
+}
+
 #blogView :not(pre) > code::before,
 #blogView :not(pre) > code::after {
     content: none;
@@ -155,7 +190,7 @@ mjx-container {
         gap: var(--fiqci-card-gap);
         padding-block: var(--fiqci-card-gap);
         position: relative;
-        background-color: var(--c-white);
+        background-color: var(--c-surface-raised);
         box-shadow: rgba(0, 0, 0, 0.15) 0 10px 20px, rgba(0, 0, 0, 0.2) 0 5px 5px;
     }
 

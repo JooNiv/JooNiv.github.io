@@ -25,7 +25,7 @@ const buildGroups = ({ quantum = [], super: supercomputers = [], emulation = [] 
 
 const ResourceDetails = ({ resource, hidden }) => (
     <article id={`resource-${resource.id}`} hidden={hidden} aria-labelledby={`resource-${resource.id}-name`}
-        className="border border-gray-200 p-6 flex flex-col lg:flex-row gap-6">
+        className="border border-gray-200 dark:border-border p-6 flex flex-col lg:flex-row gap-6">
         {resource.image && (
             <img
                 className="w-full max-w-[420px] lg:w-[320px] shrink-0 aspect-video object-cover self-start"
@@ -36,14 +36,14 @@ const ResourceDetails = ({ resource, hidden }) => (
         <div className="flex flex-col gap-4 grow min-w-0">
             <div>
                 <h3 id={`resource-${resource.id}-name`} className="text-xl font-bold">{resource.name}</h3>
-                {resource.retired && <p className="text-sm font-semibold text-gray-600 pt-1">Decommissioned</p>}
+                {resource.retired && <p className="text-sm font-semibold text-gray-600 dark:text-on-surface-muted pt-1">Decommissioned</p>}
             </div>
             <p className="text-sm">{resource.desc?.trim()}</p>
             {resource.links?.some(link => link.link) && (
                 <ul className="flex flex-col gap-2">
                     {resource.links.filter(link => link.link).map((link, index) => (
                         <li key={index}>
-                            <a href={prependBaseURL(link.link)} className="text-sky-800 hover:underline inline-flex items-center gap-2">
+                            <a href={prependBaseURL(link.link)} className="text-fiqci-link hover:underline inline-flex items-center gap-2">
                                 {link.teaser}
                                 <Icon path={ICONS[link.icon] || (isExternal(link.link) ? mdiOpenInNew : mdiArrowRight)} />
                             </a>
@@ -68,8 +68,8 @@ const SidebarGroup = ({ group, selectedId, onSelect }) => {
                             aria-controls={`resource-${resource.id}`}
                             onClick={() => onSelect(resource.id)}
                             className={`w-full text-left px-3 py-2 border-l-4 cursor-pointer ${selected
-                                ? 'border-[#004E84] bg-[#E5F2F8] font-bold'
-                                : 'border-transparent hover:bg-gray-100'}`}
+                                ? 'border-[#004E84] bg-[#E5F2F8] dark:border-primary dark:bg-primary-subtle font-bold'
+                                : 'border-transparent hover:bg-gray-100 dark:hover:bg-surface-muted'}`}
                         >
                             {resource.name}
                         </button>
@@ -79,7 +79,7 @@ const SidebarGroup = ({ group, selectedId, onSelect }) => {
         </ul>
     );
 
-    const heading = 'text-xs font-bold uppercase tracking-wide text-gray-600 px-3 pb-1';
+    const heading = 'text-xs font-bold uppercase tracking-wide text-gray-600 dark:text-on-surface-muted px-3 pb-1';
 
     if (group.collapsible) {
         const containsSelected = group.resources.some(resource => resource.id === selectedId);
@@ -136,7 +136,7 @@ export const ResourceExplorer = ({ quantum, supercomputers, emulation }) => {
                 <select
                     value={selectedId}
                     onChange={event => select(event.target.value)}
-                    className="border border-gray-400 bg-white px-3 py-2"
+                    className="border border-gray-400 dark:border-border-strong bg-surface px-3 py-2"
                 >
                     {groups.map(group => (
                         <optgroup key={group.id} label={group.title}>

@@ -7,20 +7,20 @@ import { BlogCardComponent } from './BlogCards';
 import { hideOldCalls } from '../utils/resourceCalls';
 
 const filterStyles = {
-    "--_c-checkbox-color": " #004E84",
-    "--_c-checkbox-background-color-hover": " #CCE6F1",
-    "--_c-checkbox-color-active": " #004E84",
+    "--_c-checkbox-color": "var(--c-primary)",
+    "--_c-checkbox-background-color-hover": "var(--c-primary-subtle)",
+    "--_c-checkbox-color-active": "var(--c-primary)",
 }
 
 const dropdownStyles = {
-    "--c-select-active-color": " #004E84",
+    "--c-select-active-color": "var(--c-primary)",
     "--c-select-background-color": "rgba(204, 230, 241, 0)",
-    "--c-select-inactive-color": " #004E84",
-    "--c-select-option-background-color": " #004E84",
+    "--c-select-inactive-color": "var(--c-primary)",
+    "--c-select-option-background-color": "var(--c-primary)",
     "--c-select-option-background-color-hover": "rgb(132, 9, 0)",
-    "--c-select-option-text-color": " #001C39",
-    "--c-select-placeholder-color": " #001C39",
-    "--c-select-text-color": " #001C39",
+    "--c-select-option-text-color": "var(--c-on-surface)",
+    "--c-select-placeholder-color": "var(--c-on-surface)",
+    "--c-select-text-color": "var(--c-on-surface)",
 };
 
 
@@ -37,7 +37,7 @@ const BlogFilters = ({ filters, handleFilterChange }) => {
     }, [filters, handleFilterChange]);
 
     return (
-        <div className='flex flex-col gap-[24px] text-on-white'>
+        <div className='flex flex-col gap-[24px] text-on-surface'>
             {Object.entries(filters).slice(0, -1).map(([category, options]) => ( //slice(0,-1) to exclude Theme
                 <FilterCategory
                     key={category}
@@ -255,7 +255,7 @@ export const Blogs = ({ publications }) => {
     };
 
     return (
-        <div className='lg:grid grid-cols-5 gap-8 text-on-white'>
+        <div className='lg:grid grid-cols-5 gap-8 text-on-surface'>
             <div className='mt-8 hidden lg:block lg:sticky lg:top-16 xl:top-20 lg:self-start z-10 scroll-smooth'>
                 <BlogFilters filters={filters} handleFilterChange={handleFilterChange} />
             </div>

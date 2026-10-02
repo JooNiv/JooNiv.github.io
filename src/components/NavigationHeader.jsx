@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { CButton, CIcon } from '../lib/cscUi.js';
-import { mdiMagnify, mdiMenu } from '@mdi/js';
+import { mdiMagnify, mdiMenu, mdiWeatherNight, mdiWeatherSunny } from '@mdi/js';
 import { prependBaseURL } from '../utils/url';
 
 const style = {
     "--_c-button-font-size": 16,
     "--_c-button-min-width": 0,
     "--_c-button-height": "auto",
-    "--_c-icon-color": "black"
+    "--_c-icon-color": "var(--c-on-surface)"
 };
 
 const normalizePath = path => (path || '').replace(/(index\.html)?\/?$/, '') || '/';
@@ -15,7 +15,7 @@ const normalizePath = path => (path || '').replace(/(index\.html)?\/?$/, '') || 
 const NavButton = props => {
     const isActive = normalizePath(props.currentPath) === normalizePath(props.href);
 
-    let styleClass = "text-on-white text-sm py-2"
+    let styleClass = "text-on-surface text-sm py-2"
     if (isActive) {
         styleClass = styleClass + " underline underline-offset-8 decoration-2"
     }
@@ -41,8 +41,35 @@ const NavSearchButton = props => {
             style={style}
             onClick={() => (window.location.href = props.href)}
         >
-            <p className="text-on-white text-sm py-2">{props.title}</p>
-            <CIcon className='text-on-white' path={mdiMagnify} />
+            <p className="text-on-surface text-sm py-2">{props.title}</p>
+            <CIcon className='text-on-surface' path={mdiMagnify} />
+        </CButton>
+    );
+};
+
+const ThemeToggle = () => {
+    const [theme, setTheme] = useState(null);
+
+    useEffect(() => {
+        const root = document.documentElement;
+        const sync = () => setTheme(root.dataset.theme);
+        sync();
+        const observer = new MutationObserver(sync);
+        observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+        return () => observer.disconnect();
+    }, []);
+
+    const toggle = () => {
+        const next = theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem('theme', next); } catch {}
+    };
+
+    const label = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+
+    return (
+        <CButton className="w-min" text style={style} onClick={toggle} aria-label={label} title={label}>
+            <CIcon className='text-on-surface' path={theme === 'dark' ? mdiWeatherSunny : mdiWeatherNight} />
         </CButton>
     );
 };
@@ -121,10 +148,12 @@ export const NavigationHeader = props => {
 
                 <div className="lg:flex justify-end hidden navigation-header-buttons">
                     {navigationButtons}
+                    <ThemeToggle />
                 </div>
 
-                <div className='flex lg:hidden h-max'>
-                    <CIcon className='text-on-white' onClick={toggleMenu} size={40} path={mdiMenu} />
+                <div className='flex lg:hidden h-max items-center gap-2'>
+                    <ThemeToggle />
+                    <CIcon className='text-on-surface' onClick={toggleMenu} size={40} path={mdiMenu} />
                 </div>
             </div>
             <div

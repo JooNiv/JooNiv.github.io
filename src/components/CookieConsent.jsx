@@ -70,16 +70,16 @@ export const CookieModal = props => {
             onChangeValue={() => clickOutside()}
         >
             <CCard style={{ 'overflow': 'auto' }} className='overflow-auto max-h-[85vh]'>
-                <CCardTitle className='text-on-white font-bold' >Cookie consent</CCardTitle>
+                <CCardTitle className='text-on-surface font-bold' >Cookie consent</CCardTitle>
                 <CCardContent className='p-8'>
-                    <h3 className='text-on-white text-[32px]'>{props.title}</h3>
+                    <h3 className='text-on-surface text-[32px]'>{props.title}</h3>
                     {chapters.map((chapter, index) => (
                         <div key={index}>
-                            <p className='text-on-white'>{chapter.text}</p>
+                            <p className='text-on-surface'>{chapter.text}</p>
                         </div>
                     ))}
 
-                    <a className='text-sky-800 hover:underline' href="/cookies">Cookie policy</a>
+                    <a className='text-fiqci-link hover:underline' href="/cookies">Cookie policy</a>
                     <div className='flex flex-col md:flex-row justify-around gap-4'>
                         <CButton
                             className='grow text-white bg-[#0D2B53] hover:bg-blue-600'
@@ -130,7 +130,7 @@ export const CookieModalManual = props => {
 
     return (
         <div>
-            <a className='text-sky-800 hover:underline' onClick={() => setIsModalOpen(true)}>Open Cookie Consent popup</a>
+            <a className='text-fiqci-link hover:underline' onClick={() => setIsModalOpen(true)}>Open Cookie Consent popup</a>
             <CModal
                 aria-label="Cookie consent"
                 key={isModalOpen ? 'open' : 'closed'}
@@ -141,15 +141,15 @@ export const CookieModalManual = props => {
                 onChangeValue={() => closeModal()}
             >
                 <CCard style={{ 'overflow': 'scroll' }} className='overflow-scroll scroll-smooth max-h-[85vh]'>
-                    <CCardTitle className='text-on-white font-bold' >Cookie consent</CCardTitle>
+                    <CCardTitle className='text-on-surface font-bold' >Cookie consent</CCardTitle>
                     <CCardContent className='p-8'>
-                        <h3 className='text-on-white text-[32px]'>{props.title}</h3>
+                        <h3 className='text-on-surface text-[32px]'>{props.title}</h3>
                         {chapters.map((chapter, index) => (
                             <div key={index}>
-                                <p className='text-on-white'>{chapter.text}</p>
+                                <p className='text-on-surface'>{chapter.text}</p>
                             </div>
                         ))}
-                        <a className='text-sky-800 hover:underline' href="/cookies">Cookie policy</a>
+                        <a className='text-fiqci-link hover:underline' href="/cookies">Cookie policy</a>
                         <div className='flex flex-col md:flex-row justify-around gap-4'>
                             <CButton
                                 className='grow text-white bg-[#0D2B53] hover:bg-blue-600'

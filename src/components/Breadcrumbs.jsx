@@ -11,10 +11,10 @@ export const Breadcrumbs = ({ breadcrumbs }) => {
         return (
           <span key={label} className="truncate">
             {isLast ? (
-              <p className="font-semibold text-[14px] text-on-white">{label}</p>
+              <p className="font-semibold text-[14px] text-on-surface">{label}</p>
             ) : (
               <a className="text-[14px]" href={href}>
-                <p className="text-[#004E84]!">{label} &gt;</p>
+                <p className="text-primary!">{label} &gt;</p>
               </a>
             )}
           </span>

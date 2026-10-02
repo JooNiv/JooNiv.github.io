@@ -16,9 +16,9 @@ const { title, description, image, search } = Astro.props
     {search && <SearchMeta meta={{ title, ...search.meta }} />}
     <slot name="head" />
   </Head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex flex-col min-h-screen dark:bg-surface dark:text-on-surface">
     <SiteChrome client:load />
-    <header class="sticky top-0 bg-white z-40 min-h-16" id="navigation-header">
+    <header class="sticky top-0 bg-surface z-40 min-h-16" id="navigation-header">
       <NavigationHeader client:load logo={constants.logo} nav={getNavItems()} currentPath={Astro.url.pathname} />
     </header>
 
@@ -27,7 +27,7 @@ const { title, description, image, search } = Astro.props
       {search?.text && <div hidden data-pagefind-body>{title} {search.text}</div>}
     </main>
 
-    <footer class="bg-gray-100 text-gray-700 text-sm" id="footer">
+    <footer class="bg-gray-100 dark:bg-surface-muted text-gray-700 dark:text-on-surface-muted text-sm" id="footer">
       <Footer
         supportEmail={constants.support_email}
         feedbackEmail={constants.feedback_email}

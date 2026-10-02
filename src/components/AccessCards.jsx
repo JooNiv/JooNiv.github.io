@@ -6,7 +6,7 @@ import { prependBaseURL, isExternal } from '../utils/url';
 
 const AccessCardComponent = ({ title, href, teaser, description, links }) => {
     return (
-      <CCard className="flex flex-auto flex-col flex-wrap border border-gray-200 rounded-none shadow-md overflow-hidden hover:shadow-lg p-0 m-0 w-full bg-[#0D2B53] text-white">
+      <CCard className="flex flex-auto flex-col flex-wrap border border-gray-200 dark:border-border rounded-none shadow-md overflow-hidden hover:shadow-lg p-0 m-0 w-full bg-[#0D2B53] text-white">
         <img
           src={prependBaseURL(teaser)}
           alt="teaser"
@@ -39,10 +39,10 @@ export const AccessCards = props => {
             {accessCardComponents}
         </div>
         <div className="mt-4">
-            <div className="flex items-center gap-3 text-md text-on-white py-4">Other quantum resources will continuously be added to the FiQCI infrastructure.</div>
+            <div className="flex items-center gap-3 text-md text-on-surface py-4">Other quantum resources will continuously be added to the FiQCI infrastructure.</div>
             <a
                 href={prependBaseURL("/status")}
-                className="text-sky-800 hover:underline font-bold"
+                className="text-fiqci-link hover:underline font-bold"
             >
                 <div className="flex items-center gap-3">
                     <div className="text-sm">Service status</div>

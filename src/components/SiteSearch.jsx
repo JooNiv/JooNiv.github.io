@@ -12,7 +12,7 @@ const styleArrow = {
   "--_c-button-font-size": 14,
   "--_c-button-min-width": 0,
   "--_c-button-height": "auto",
-  "--_c-icon-color": "#004E84"
+  "--_c-icon-color": "var(--c-primary)"
 };
 
 const TYPE_CATEGORIES = {
@@ -79,11 +79,11 @@ const SearchBar = ({ setResults, setQuery, query }) => {
 
   return (
     <div className='flex flex-row items-center w-full min-h-[42px]'>
-      <span className='flex mx-3 text-on-white'><CIcon size={24} path={mdiMagnify} /></span>
+      <span className='flex mx-3 text-on-surface'><CIcon size={24} path={mdiMagnify} /></span>
       <form onSubmit={handleSubmit} className='w-full mr-3'>
         <input onChange={handleSearchBar} className="w-full focus:outline-hidden" placeholder="Search..." type="text" id="search-box" name="query" value={query} />
       </form>
-      <span className='flex mx-3 text-on-white cursor-pointer' onClick={() => handleClose()}><CIcon size={24} path={mdiClose} /></span>
+      <span className='flex mx-3 text-on-surface cursor-pointer' onClick={() => handleClose()}><CIcon size={24} path={mdiClose} /></span>
       <span className='flex mr-3'><CButton onClick={handleSubmit} size='small' ghost>Search</CButton></span>
     </div>
   )
@@ -119,14 +119,14 @@ const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) 
   }, [paginationOptions.currentPage]);
 
   return (
-    <div id={id} className='mb-8 text-on-white'>
+    <div id={id} className='mb-8 text-on-surface'>
       {results[type].length !== 0 &&
         <div>
           <div className='flex flex-row pt-2'>
             <h1 className='mb-6 mr-3 text-xl font-bold'>{capitalizeFirstLetter(type)}</h1>
             {type !== "general" &&
               <a href={href} >
-                <CIcon style={styleArrow} className='pt-1 text[#004E84]' path={mdiArrowRight} />
+                <CIcon style={styleArrow} className='pt-1 text-primary' path={mdiArrowRight} />
 
               </a>
             }
@@ -136,7 +136,7 @@ const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) 
               paginationOptions.itemsPerPage, (paginationOptions.currentPage - 1) *
               paginationOptions.itemsPerPage + paginationOptions.itemsPerPage).map((item, index) => (
                 <li className='pb-6' key={index}>
-                  <strong><a className='text-[#004E84] hover:underline' href={type === "events" ? item.link : prependBaseURL(item.url)}>{item.title}</a></strong><br />
+                  <strong><a className='text-primary hover:underline' href={type === "events" ? item.link : prependBaseURL(item.url)}>{item.title}</a></strong><br />
                   <div className='flex flex-row'>
                     <p className='font-semibold'>{capitalizeFirstLetter(item.type)}</p>
                     {type !== "general" &&
@@ -163,7 +163,7 @@ const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) 
 
 const Filters = ({ filters, handleCheckboxChange }) => {
   return (
-    <div className='text-on-white'>
+    <div className='text-on-surface'>
       <p className='font-semibold mb-[16px]'>Results type</p>
       <div className='ml-[-10px] flex flex-col'>
         {Object.keys(filters).map(option => (
@@ -370,13 +370,13 @@ export const SiteSearch = () => {
   };
 
   return (
-    <div className='text-on-white min-[2600px]:mx-auto min-[2600px]:max-w-[50vw] mx-2 sm:mx-8 lg:mx-[100px] lg:grid grid-cols-5 gap-0'>
+    <div className='text-on-surface min-[2600px]:mx-auto min-[2600px]:max-w-[50vw] mx-2 sm:mx-8 lg:mx-[100px] lg:grid grid-cols-5 gap-0'>
       <div className='mt-24 hidden lg:block lg:sticky lg:top-16 lg:self-start z-10'>
         <Filters filters={filters} handleCheckboxChange={handleCheckboxChange} />
       </div>
 
       <div className='mt-24 col-span-5 lg:col-span-3'>
-        <div className='mb-2 lg:mb-20 border-2 border-on-white min-h-[45px] flex flex-row items-center text-lg'>
+        <div className='mb-2 lg:mb-20 border-2 border-on-surface min-h-[45px] flex flex-row items-center text-lg'>
           <SearchBar setResults={setResults} setQuery={setQuery} query={query} />
         </div>
         <div>
