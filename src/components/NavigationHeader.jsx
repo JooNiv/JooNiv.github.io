@@ -10,8 +10,10 @@ const style = {
     "--_c-icon-color": "black"
 };
 
+const normalizePath = path => (path || '').replace(/(index\.html)?\/?$/, '') || '/';
+
 const NavButton = props => {
-    const isActive = props.currentPath === props.href;
+    const isActive = normalizePath(props.currentPath) === normalizePath(props.href);
 
     let styleClass = "text-on-white text-sm py-2"
     if (isActive) {
