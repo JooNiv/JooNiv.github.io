@@ -381,7 +381,7 @@ export const SiteSearch = () => {
         </div>
         <div>
           <CButton
-            className='mb-8 flex items-center py-2 max-w-[50px] max-h-[40px] lg:hidden '
+            className='mb-8 inline-flex items-center py-2 lg:hidden'
             onClick={() => onOpenDialog()}
           >
             Filters
