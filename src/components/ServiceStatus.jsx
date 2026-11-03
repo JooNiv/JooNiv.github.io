@@ -152,7 +152,6 @@ export const ServiceStatus = (props) => {
 
   const handleCardClick = (qc) => {
     setModalProps({ ...qc, devicesWithStatus });
-    setModalProps({ ...qc, devicesWithStatus });
     setModalOpen(true);
   };
   const tools = props.tools || [];
