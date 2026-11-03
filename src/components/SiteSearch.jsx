@@ -92,18 +92,18 @@ const SearchBar = ({ setResults, setQuery, query }) => {
 
 const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) => {
   // Track last page to prevent scroll on results update
-  const lastPageRef = React.useRef(paginationOptions.currentPage);
+  const lastPageRef = React.useRef(paginationOptions.page);
 
   const handlePageChange = (setOptions) => (event) => {
-    setOptions(prev => ({ ...prev, currentPage: event.detail.currentPage }));
+    setOptions(prev => ({ ...prev, page: event.detail.page }));
   };
 
   // Only scroll when user triggers page change, not when results update
   const onPageChange = (setOptions) => (event) => {
     handlePageChange(setOptions)(event);
     // Only scroll if the page actually changed
-    if (event.detail.currentPage !== lastPageRef.current) {
-      lastPageRef.current = event.detail.currentPage;
+    if (event.detail.page !== lastPageRef.current) {
+      lastPageRef.current = event.detail.page;
       const thisElement = document.getElementById(id);
       if (thisElement) {
         const yOffset = -80; // Account for navbar
@@ -115,8 +115,8 @@ const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) 
 
   React.useEffect(() => {
     // Keep ref in sync with external page changes (e.g. results update)
-    lastPageRef.current = paginationOptions.currentPage;
-  }, [paginationOptions.currentPage]);
+    lastPageRef.current = paginationOptions.page;
+  }, [paginationOptions.page]);
 
   return (
     <div id={id} className='mb-8 text-on-surface'>
@@ -132,9 +132,9 @@ const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) 
             }
           </div>
           <ul>
-            {results[type].slice((paginationOptions.currentPage - 1) *
-              paginationOptions.itemsPerPage, (paginationOptions.currentPage - 1) *
-              paginationOptions.itemsPerPage + paginationOptions.itemsPerPage).map((item, index) => (
+            {results[type].slice((paginationOptions.page - 1) *
+              paginationOptions.pageSize, (paginationOptions.page - 1) *
+              paginationOptions.pageSize + paginationOptions.pageSize).map((item, index) => (
                 <li className='pb-6' key={index}>
                   <strong><a className='text-primary hover:underline' href={type === "events" ? item.link : prependBaseURL(item.url)}>{item.title}</a></strong><br />
                   <div className='flex flex-row'>
@@ -152,8 +152,7 @@ const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) 
           <CPagination
             value={paginationOptions}
             hideDetails
-            onChangeValue={onPageChange(setOptions)}
-            control
+            onChange={onPageChange(setOptions)}
           />
         </div>
       }
@@ -173,7 +172,7 @@ const Filters = ({ filters, handleCheckboxChange }) => {
             hideDetails
             key={option}
             checked={filters[option]}
-            onChangeValue={() => handleCheckboxChange(option)}
+            onChange={() => handleCheckboxChange(option)}
           >
             <p className='text-sm'>{option}</p>
           </CCheckbox>
@@ -192,7 +191,7 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleCheckboxChang
 
       value={isModalOpen}
       dismissable
-      onChangeValue={event => setIsModalOpen(event.detail)}
+      onChange={event => setIsModalOpen(event.detail)}
     >
       <CCard style={{ "overflow": "scroll" }} className='overflow-scroll max-h-[80vh]'>
         <CCardTitle>Filters</CCardTitle>
@@ -244,22 +243,22 @@ export const SiteSearch = () => {
 
   const [paginationOptionsGen, setOptionsGen] = useState({
     itemCount: 5,
-    itemsPerPage: 5,
-    currentPage: 1,
+    pageSize: 5,
+    page: 1,
     pageSizes: [5, 10, 15, 25, 50]
   });
 
   const [paginationOptionsBlog, setOptionsBlog] = useState({
     itemCount: 5,
-    itemsPerPage: 5,
-    currentPage: 1,
+    pageSize: 5,
+    page: 1,
     pageSizes: [5, 10, 15, 25, 50]
   });
 
   const [paginationOptionsEvent, setOptionsEvent] = useState({
     itemCount: 5,
-    itemsPerPage: 5,
-    currentPage: 1,
+    pageSize: 5,
+    page: 1,
     pageSizes: [5, 10, 15, 25, 50]
   });
 
@@ -316,13 +315,13 @@ export const SiteSearch = () => {
   const handleFilterChange = (newFilters, type) => {
     setFilters(newFilters);
     if (type === "general") {
-      setOptionsGen(prev => ({ ...prev, currentPage: 1 }));
+      setOptionsGen(prev => ({ ...prev, page: 1 }));
     }
     else if (type === "blogs") {
-      setOptionsBlog(prev => ({ ...prev, currentPage: 1 }));
+      setOptionsBlog(prev => ({ ...prev, page: 1 }));
     }
     else {
-      setOptionsEvent(prev => ({ ...prev, currentPage: 1 }));
+      setOptionsEvent(prev => ({ ...prev, page: 1 }));
     }
   };
 

@@ -63,7 +63,7 @@ const FilterCategory = ({ category, options, handleCheckboxChange }) => (
                 hideDetails={true}
                 key={option}
                 checked={options[option]}
-                onChangeValue={() => handleCheckboxChange(category, option)}
+                onChange={() => handleCheckboxChange(category, option)}
             >
                 <p className='text-sm'>{option}</p>
             </CCheckbox>
@@ -87,7 +87,7 @@ const FilterTheme = ({ selectedTheme, handleChangeTheme }) => (
                 { name: 'Technical', value: 'Technical' },
             ]}
             placeholder='Choose a theme'
-            onChangeValue={handleChangeTheme}
+            onChange={handleChangeTheme}
         />
     </div>
 );
@@ -102,7 +102,7 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleFilterChange 
             className='overflow-hidden!'
             value={isModalOpen}
             dismissable
-            onChangeValue={event => setIsModalOpen(event.detail)}
+            onChange={event => setIsModalOpen(event.detail)}
         >
             <CCard style={{ overflow: 'scroll' }} className='overflow-scroll lg:overflow-hidden! max-h-[80vh]'>
                 <CCardTitle>Filters</CCardTitle>
@@ -158,8 +158,8 @@ const BlogsList = ({ id, title, blogs, paginationOptions, handlePageChange, show
                 <>
                     <div className='grid grid-cols-1 py-6 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6'>
                         {blogs.slice(
-                            (paginationOptions.currentPage - 1) * paginationOptions.itemsPerPage,
-                            (paginationOptions.currentPage - 1) * paginationOptions.itemsPerPage + paginationOptions.itemsPerPage
+                            (paginationOptions.page - 1) * paginationOptions.pageSize,
+                            (paginationOptions.page - 1) * paginationOptions.pageSize + paginationOptions.pageSize
                         ).map(({ key, ...blog }) => (
                             <BlogCardComponent key={key} {...blog} />
                         ))}
@@ -167,8 +167,7 @@ const BlogsList = ({ id, title, blogs, paginationOptions, handlePageChange, show
                     <CPagination
                         value={paginationOptions}
                         hideDetails
-                        onChangeValue={onPageChange}
-                        control
+                        onChange={onPageChange}
                     />
                 </>
             ) : (
@@ -190,8 +189,8 @@ export const Blogs = ({ publications }) => {
 
     const [options, setOptions] = useState({
         itemCount: blogs_dict.length,
-        itemsPerPage: 8,
-        currentPage: 1,
+        pageSize: 8,
+        page: 1,
         pageSizes: [5, 10, 15, 25, 50]
     }); //pagination control
 
@@ -245,13 +244,13 @@ export const Blogs = ({ publications }) => {
     };
 
     const handlePageChange = (setOptions) => (blog) => {
-        // blog.detail.currentPage should be the new page number.
-        setOptions(prev => ({ ...prev, currentPage: blog.detail.currentPage }));
+        // blog.detail.page should be the new page number.
+        setOptions(prev => ({ ...prev, page: blog.detail.page }));
     };
 
     const handleFilterChange = (newFilters) => {
         setFilters(newFilters);
-        setOptions(prev => ({ ...prev, currentPage: 1 }));
+        setOptions(prev => ({ ...prev, page: 1 }));
     };
 
     return (

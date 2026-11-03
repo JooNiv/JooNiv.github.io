@@ -56,7 +56,7 @@ const FilterCategory = ({ category, options, handleCheckboxChange }) => (
                 key={option}
                 hideDetails
                 checked={options[option]}
-                onChangeValue={() => handleCheckboxChange(category, option)}
+                onChange={() => handleCheckboxChange(category, option)}
             >
 
                 <p className='text-sm'>{option}</p>
@@ -81,7 +81,7 @@ const FilterTheme = ({ selectedTheme, handleChangeTheme }) => (
                 { name: 'Course/Workshop', value: 'Course/Workshop' },
             ]}
             placeholder='Choose a theme'
-            onChangeValue={handleChangeTheme}
+            onChange={handleChangeTheme}
         />
     </div>
 );
@@ -97,7 +97,7 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleFilterChange 
             className='overflow-hidden!'
             value={isModalOpen}
             dismissable
-            onChangeValue={event => setIsModalOpen(event.detail)}
+            onChange={event => setIsModalOpen(event.detail)}
         >
             <CCard style={{ 'overflow': 'scroll' }} className='overflow-scroll lg:overflow-hidden! max-h-[80vh]'>
                 <CCardTitle>Filters</CCardTitle>
@@ -145,8 +145,8 @@ const EventsList = ({ id, title, events, paginationOptions, handlePageChange, sh
                 <>
                     <div className='grid grid-cols-1 py-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6'>
                         {events.slice(
-                            (paginationOptions.currentPage - 1) * paginationOptions.itemsPerPage,
-                            (paginationOptions.currentPage - 1) * paginationOptions.itemsPerPage + paginationOptions.itemsPerPage
+                            (paginationOptions.page - 1) * paginationOptions.pageSize,
+                            (paginationOptions.page - 1) * paginationOptions.pageSize + paginationOptions.pageSize
                         ).map(({ key, ...event }) => (
                             <EventCardComponent key={key} {...event} />
                         ))}
@@ -154,8 +154,7 @@ const EventsList = ({ id, title, events, paginationOptions, handlePageChange, sh
                     <CPagination
                         value={paginationOptions}
                         hideDetails
-                        onChangeValue={handlePageChange}
-                        control
+                        onChange={handlePageChange}
                     />
                 </>
             ) : (
@@ -179,15 +178,15 @@ export const Events = ({ events }) => {
 
     const [optionsPast, setOptionsPast] = useState({
         itemCount: events_dict.past.length,
-        itemsPerPage: 8,
-        currentPage: 1,
+        pageSize: 8,
+        page: 1,
         pageSizes: [5, 10, 15, 25, 50]
     }); //pagination control for past events
 
     const [optionsUpcoming, setOptionsUpcoming] = useState({
         itemCount: events_dict.upcoming.length,
-        itemsPerPage: 8,
-        currentPage: 1,
+        pageSize: 8,
+        page: 1,
         pageSizes: [5, 10, 15, 25, 50]
     }); //pagination control for upcoming events
 
@@ -256,11 +255,11 @@ export const Events = ({ events }) => {
     };
 
     const handlePageChange = (setOptions, pageRef, id) => (event) => {
-        const nextPage = event.detail.currentPage;
+        const nextPage = event.detail.page;
         const clicked = nextPage !== pageRef.current;
 
         pageRef.current = nextPage;
-        setOptions(prev => ({ ...prev, currentPage: nextPage }));
+        setOptions(prev => ({ ...prev, page: nextPage }));
 
         if (clicked) scrollToSection(id);
     };
@@ -270,8 +269,8 @@ export const Events = ({ events }) => {
 
         pageUpcoming.current = 1;
         pagePast.current = 1;
-        setOptionsUpcoming(prev => ({ ...prev, currentPage: 1 }));
-        setOptionsPast(prev => ({ ...prev, currentPage: 1 }));
+        setOptionsUpcoming(prev => ({ ...prev, page: 1 }));
+        setOptionsPast(prev => ({ ...prev, page: 1 }));
 
         if (isModalOpen) {
             pendingScroll.current = true;
