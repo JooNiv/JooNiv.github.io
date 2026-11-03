@@ -45,7 +45,7 @@ export const ModalContent = (props) => {
     });
 
     const [viewState, setViewState] = useState({
-        rawDataType: { name: 'Calibration Data', value: 'calibration_data' },
+        rawDataType: 'calibration_data',
         tableView: false,
         qubitSwitch: true,
     });
@@ -166,7 +166,7 @@ export const ModalContent = (props) => {
                                         <LoadingBlock label='Loading raw data…' />
                                     ) : dataError ? (
                                         <ErrorBlock label='Raw data is currently unavailable.' />
-                                    ) : viewState.rawDataType.value === 'calibration_data' && viewState.tableView ? (
+                                    ) : viewState.rawDataType === 'calibration_data' && viewState.tableView ? (
                                         <CalibrationTable
                                             calibrationData={calibrationData}
                                             qubitSwitch={viewState.qubitSwitch}
@@ -175,9 +175,9 @@ export const ModalContent = (props) => {
                                         />
                                     ) : (
                                         <pre className="text-xs overflow-auto bg-gray-100 dark:bg-surface-sunken p-2 rounded-sm whitespace-pre-wrap wrap-break-word max-w-full">
-                                            {viewState.rawDataType.value === 'calibration_data' &&
+                                            {viewState.rawDataType === 'calibration_data' &&
                                                 JSON.stringify(calibrationDataAll, null, 2)}
-                                            {viewState.rawDataType.value === 'device_info' &&
+                                            {viewState.rawDataType === 'device_info' &&
                                                 JSON.stringify(deviceInfoData, null, 2)}
                                         </pre>
                                     )}

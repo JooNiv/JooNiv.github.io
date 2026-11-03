@@ -1,7 +1,7 @@
 // Utility functions for SideBar
 
 export const getCurrentRawData = (rawDataType, calibrationDataAll, deviceInfoData) => {
-    return rawDataType.value === 'calibration_data' ? calibrationDataAll : deviceInfoData;
+    return rawDataType === 'calibration_data' ? calibrationDataAll : deviceInfoData;
 };
 
 export const copyToClipboard = async (data, setCopySuccess) => {
@@ -19,7 +19,7 @@ export const downloadRawData = (data, deviceData, rawDataType) => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${deviceData.device_id.toLowerCase()}_${rawDataType.value}_${new Date().toISOString().split('T')[0]}.json`;
+    a.download = `${deviceData.device_id.toLowerCase()}_${rawDataType}_${new Date().toISOString().split('T')[0]}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

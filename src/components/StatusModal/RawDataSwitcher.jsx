@@ -1,5 +1,5 @@
 import React from 'react';
-import { CRadioGroup, CSwitch, CButton } from '@cscfi/csc-ui-react';
+import { CRadioGroup, CRadio, CSwitch, CButton } from '@cscfi/csc-ui-react';
 import { getCurrentRawData, copyToClipboard, downloadRawData } from '../../utils/sidebarUtils';
 
 export const RawDataSwitcher = (props) => {
@@ -25,19 +25,14 @@ export const RawDataSwitcher = (props) => {
             <p className='font-bold mb-[2px]'>Data Type:</p>
             <CRadioGroup className='text-sm'
                 hideDetails={true}
-                returnObject
-                items={[
-                    { name: 'Calibration Data', value: 'calibration_data' },
-                    { name: 'Device Info', value: 'device_info' },
-                ]}
                 onChange={(e) => updateViewState('rawDataType', e.detail)}
-                defaultValue={{ name: 'Calibration Data', value: 'calibration_data' }}
                 value={viewState.rawDataType}
                 inline={true}
-
             >
+                <CRadio value='calibration_data'>Calibration Data</CRadio>
+                <CRadio value='device_info'>Device Info</CRadio>
             </CRadioGroup>
-            {viewState.rawDataType.value === 'calibration_data' &&
+            {viewState.rawDataType === 'calibration_data' &&
                 <div className='mt-8 ml-2'>
                     <CSwitch
                         value={viewState.tableView}
@@ -47,7 +42,7 @@ export const RawDataSwitcher = (props) => {
                     </CSwitch>
                 </div>
             }
-            {viewState.tableView && viewState.rawDataType.value === 'calibration_data' &&
+            {viewState.tableView && viewState.rawDataType === 'calibration_data' &&
                 <>
                     <div className='mt-2 ml-2 flex flex-col'>
                         <CSwitch
