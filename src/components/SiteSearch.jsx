@@ -1,3 +1,4 @@
+import '../lib/cscUiTheme.js'
 import React, { useState, useEffect, useCallback } from 'react';
 import { mdiMagnify, mdiArrowRight, mdiClose } from '@mdi/js';
 import {

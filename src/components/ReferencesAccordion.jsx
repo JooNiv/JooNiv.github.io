@@ -1,3 +1,4 @@
+import '../lib/cscUiTheme.js'
 import React, { useEffect, useState } from 'react';
 import { CAccordion, CAccordionItem } from '@cscfi/csc-ui-react';
 

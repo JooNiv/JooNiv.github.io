@@ -1,3 +1,4 @@
+import '../lib/cscUiTheme.js'
 import React from 'react';
 import { CButton, CIcon } from '@cscfi/csc-ui-react';
 import { mdiArrowRight, mdiArrowDown, mdiOpenInNew } from '@mdi/js';

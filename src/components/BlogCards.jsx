@@ -1,3 +1,4 @@
+import '../lib/cscUiTheme.js'
 import React from 'react';
 import { CCard, CIcon, CCardContent } from '@cscfi/csc-ui-react';
 import { mdiArrowRight } from '@mdi/js';

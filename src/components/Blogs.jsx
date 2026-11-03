@@ -1,3 +1,4 @@
+import '../lib/cscUiTheme.js'
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
     CPagination, CCheckbox, CSelect, CButton, CModal, CCard,

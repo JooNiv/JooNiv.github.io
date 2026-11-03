@@ -1,3 +1,4 @@
+import '../lib/cscUiTheme.js'
 import React from 'react';
 import { CTag, CTags } from '@cscfi/csc-ui-react';
 

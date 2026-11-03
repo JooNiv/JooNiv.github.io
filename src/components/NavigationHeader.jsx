@@ -1,3 +1,4 @@
+import '../lib/cscUiTheme.js'
 import React, { useState, useRef, useEffect } from 'react';
 import { CButton, CIcon } from '@cscfi/csc-ui-react';
 import { mdiMagnify, mdiMenu, mdiWeatherNight, mdiWeatherSunny } from '@mdi/js';
