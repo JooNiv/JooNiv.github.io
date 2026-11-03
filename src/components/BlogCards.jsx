@@ -1,5 +1,5 @@
 import React from 'react';
-import { CCard, CIcon, CCardContent } from '../lib/cscUi.js';
+import { CCard, CIcon, CCardContent } from '@cscfi/csc-ui-react';
 import { mdiArrowRight } from '@mdi/js';
 import { prependBaseURL } from '../utils/url';
 import { hideOldCalls } from '../utils/resourceCalls';

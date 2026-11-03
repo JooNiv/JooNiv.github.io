@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import Calendar from "react-calendar";
 import { format, parseISO } from "date-fns";
-import { CModal, CCard, CCardTitle, CCardContent, CSelect, CCardActions, CButton, CTextField } from '../lib/cscUi.js';
+import { CModal, CCard, CCardTitle, CCardContent, CSelect, CCardActions, CButton, CTextField } from '@cscfi/csc-ui-react';
 import { capitalizeFirstLetter } from "../utils/textUtils";
 import { useWindowSize } from "../utils/modalUtils";
 
@@ -210,7 +210,6 @@ const BookingCalendar = (props) => {
                             hideDetails={true}
                             label={"Device"}
                             className='w-24 -py-[2px]'
-                            clearable
                             value={filter}
                             items={[
                                 { name: 'Q5', value: 'Q5' },
@@ -227,7 +226,7 @@ const BookingCalendar = (props) => {
                             hideDetails={true}
                             label={"View"}
                             className='w-24 -py-[2px]'
-                            clearable
+                            
                             value={view}
                             items={[
                                 { name: 'List', value: 'List' },

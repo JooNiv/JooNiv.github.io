@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CAccordion, CAccordionItem } from '../lib/cscUi.js';
+import { CAccordion, CAccordionItem } from '@cscfi/csc-ui-react';
 
 export const ReferencesAccordion = () => {
     const [references, setReferences] = useState([]);

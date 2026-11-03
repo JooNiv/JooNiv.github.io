@@ -1,5 +1,5 @@
 import React from 'react';
-import { CIcon } from '../lib/cscUi.js';
+import { CIcon } from '@cscfi/csc-ui-react';
 import { mdiArrowRight } from '@mdi/js';
 import { BlogCardComponent } from './BlogCards';
 import { prependBaseURL } from '../utils/url';

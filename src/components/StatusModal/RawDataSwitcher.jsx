@@ -1,5 +1,5 @@
 import React from 'react';
-import { CRadioGroup, CSwitch, CButton } from '../../lib/cscUi.js';
+import { CRadioGroup, CSwitch, CButton } from '@cscfi/csc-ui-react';
 import { getCurrentRawData, copyToClipboard, downloadRawData } from '../../utils/sidebarUtils';
 
 export const RawDataSwitcher = (props) => {

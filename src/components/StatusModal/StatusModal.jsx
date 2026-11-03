@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-import { CModal } from '../../lib/cscUi.js';
+import { CModal } from '@cscfi/csc-ui-react';
 
 import { ModalContent } from './StatusModalConent';
 import { useWindowSize } from '../../utils/modalUtils';

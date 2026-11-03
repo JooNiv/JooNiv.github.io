@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { CButton, CIcon } from '../lib/cscUi.js';
+import { CButton, CIcon } from '@cscfi/csc-ui-react';
 import { mdiMagnify, mdiMenu, mdiWeatherNight, mdiWeatherSunny } from '@mdi/js';
 import { prependBaseURL } from '../utils/url';
 

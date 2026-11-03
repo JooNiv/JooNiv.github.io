@@ -1,5 +1,5 @@
 import React from 'react';
-import { CButton, CIcon } from '../lib/cscUi.js';
+import { CButton, CIcon } from '@cscfi/csc-ui-react';
 import { mdiArrowRight, mdiArrowDown, mdiOpenInNew } from '@mdi/js';
 import { prependBaseURL, isExternal, isAnchor } from '../utils/url';
 

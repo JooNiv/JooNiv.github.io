@@ -3,7 +3,7 @@ import { mdiMagnify, mdiArrowRight, mdiClose } from '@mdi/js';
 import {
   CButton, CPagination, CIcon, CCheckbox, CModal, CCard,
   CCardTitle, CCardContent, CCardActions
-} from '../lib/cscUi.js';
+} from '@cscfi/csc-ui-react';
 import { prependBaseURL } from '../utils/url';
 import { capitalizeFirstLetter } from "../utils/textUtils";
 import DOMPurify from 'dompurify';

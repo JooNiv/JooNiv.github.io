@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
     CPagination, CCheckbox, CSelect, CButton, CModal, CCard,
     CCardTitle, CCardContent, CCardActions
-} from '../lib/cscUi.js';
+} from '@cscfi/csc-ui-react';
 import { BlogCardComponent } from './BlogCards';
 import { hideOldCalls } from '../utils/resourceCalls';
 

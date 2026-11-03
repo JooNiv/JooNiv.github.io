@@ -1,5 +1,5 @@
 import React from 'react'
-import { CTable } from '../../lib/cscUi.js';
+import { CTable } from '@cscfi/csc-ui-react';
 import { formatMetricValue } from '../../utils/formatMetricValue';
 
 const QUBIT_SEGMENT = /^QB(\d+)$/;
