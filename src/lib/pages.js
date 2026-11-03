@@ -1,3 +1,4 @@
+/** Top-level site pages: their URLs, titles and subtitles, keyed by the original Jekyll page path. */
 export const pages = [
   { path: 'pages/home.md', url: '/', title: 'Welcome' },
   { path: 'pages/about.md', url: '/about/', title: 'About FiQCI', subtitle: 'The FiQCI consortium maintains, operates, and develops the infrastructure' },

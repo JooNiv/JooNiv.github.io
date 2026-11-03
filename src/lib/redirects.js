@@ -1,3 +1,4 @@
+/** Paths served by redirect-only pages; kept out of the sitemap and listed as redirects in /api/pages.json. */
 export const redirectPaths = [
   '/resource-call',
   '/qcut',

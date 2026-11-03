@@ -1,3 +1,4 @@
+/** Shared site helpers: publication and event collections, their URLs, date formatting, search text and nav items. */
 import { getCollection } from 'astro:content'
 import { constants } from './constants.js'
 import { pages } from './pages.js'

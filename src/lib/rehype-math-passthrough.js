@@ -1,3 +1,4 @@
+/** Rehype plugin that turns remark-math nodes back into \(…\) and \[…\] text for MathJax to render in the browser. */
 const classes = node => node.properties?.className || []
 const textOf = node => (node.children || []).map(c => c.value ?? textOf(c)).join('')
 

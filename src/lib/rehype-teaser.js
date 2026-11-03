@@ -1,3 +1,4 @@
+/** Rehype plugin that inserts a post's header teaser image after its first paragraph, when that paragraph starts with italic text. */
 const findFirstParagraph = node => {
   for (const [index, child] of (node.children || []).entries()) {
     if (child.type === 'element' && child.tagName === 'p') return { parent: node, index, paragraph: child }

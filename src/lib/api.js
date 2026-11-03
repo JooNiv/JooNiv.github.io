@@ -1,3 +1,4 @@
+/** Builds the /api/*.json payloads, keeping the field layout of the old Jekyll site's JSON API. */
 import { getPublicationEntries, getEventEntries, publicationUrl, eventUrl } from './site.js'
 import { pages } from './pages.js'
 import { redirectPaths } from './redirects.js'
