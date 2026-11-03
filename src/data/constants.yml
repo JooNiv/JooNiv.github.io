@@ -275,7 +275,10 @@ cookie_consent:
         Check out the new "Tools" section for FiQCI tools and example notebooks.
       type: info
       link: "#tools"
-      
+    - text: |-
+        Aalto Q20 status is currently unreliable and might report online when the device is actually offline. We are working on fixing this issue. Apologies for the inconvenience.
+      type: warning
+
   tools:
     - name: FiQCI-EMS
       description: Error mitigation service. Adds readout error mitigation, dynamical decoupling, Pauli twirling and zero-noise extrapolation to Qiskit workflows on IQM devices.
