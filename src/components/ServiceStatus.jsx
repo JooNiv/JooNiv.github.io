@@ -213,7 +213,7 @@ export const ServiceStatus = (props) => {
             { name: 'Host', value: 'host' },
           ]}
           placeholder='Sort'
-          onChangeValue={handleSortChange}
+          onChange={handleSortChange}
           key={`device-sort`}
         />
         <CButton

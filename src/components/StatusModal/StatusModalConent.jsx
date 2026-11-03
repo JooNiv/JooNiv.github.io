@@ -103,7 +103,7 @@ export const ModalContent = (props) => {
                         deviceData={{ ...props }}
                     />
 
-                    <CTabs value={activeTab} onChangeValue={(e) => setActiveTab(e.detail)} className='col-span-1 md:col-span-2 lg:col-span-3'>
+                    <CTabs value={activeTab} onChange={(e) => setActiveTab(e.detail)} className='col-span-1 md:col-span-2 lg:col-span-3'>
                         <CTab value="overview">
                             Overview
                         </CTab>

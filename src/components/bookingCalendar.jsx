@@ -26,7 +26,7 @@ export const BookingModal = (props) => {
             width={modalWidths[size]}
             value={props.isModalOpen}
             dismissable
-            onChangeValue={e => props.setIsModalOpen(e.detail)}
+            onChange={e => props.setIsModalOpen(e.detail)}
         >
 
             <CCard style={{ overflow: 'scroll' }} className='text-on-surface m-0! lg:mx-[100px] flex flex-col overflow-scroll lg:overflow-auto! max-h-[80vh] '>
@@ -201,7 +201,7 @@ const BookingCalendar = (props) => {
                         label={"Date"}
                         type={"date"}
                         value={format(selectedDate, "yyyy-MM-dd")}
-                        onChangeValue={handleDateChange}
+                        onChange={handleDateChange}
                         validate={false}
                         validation={"Invalid date"}
                     />
@@ -218,7 +218,7 @@ const BookingCalendar = (props) => {
                                 { name: 'All', value: 'All' },
                             ]}
                             placeholder='Device'
-                            onChangeValue={handleFilterChange}
+                            onChange={handleFilterChange}
                             key={`device-select-${props.isModalOpen}`}
                         />
                     </div>
@@ -234,7 +234,7 @@ const BookingCalendar = (props) => {
                                 { name: 'Grid', value: 'Grid' },
                             ]}
                             placeholder='View'
-                            onChangeValue={handleViewChange}
+                            onChange={handleViewChange}
                             key={`view-select-${props.isModalOpen}`}
                         />
                     </div>

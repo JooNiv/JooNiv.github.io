@@ -33,7 +33,7 @@ export const MetricSwitcher = (props) => {
                         value={metricsState.qubitMetric}
                         //items={qubitMetricOptions}
                         placeholder='Choose metric'
-                        onChangeValue={(e) => {
+                        onChange={(e) => {
                             updateMetricsState('qubitMetric', e.detail || '');
                             updateMetricsState('thresholdQubit', 0);
                             setQubitInputValue('0');
@@ -187,7 +187,7 @@ export const MetricSwitcher = (props) => {
                         clearable
                         value={metricsState.couplerMetric}
                         placeholder='Choose metric'
-                        onChangeValue={(e) => {
+                        onChange={(e) => {
                             updateMetricsState('couplerMetric', e.detail || '');
                             updateMetricsState('thresholdCoupler', 0);
                             setCouplerInputValue('0');

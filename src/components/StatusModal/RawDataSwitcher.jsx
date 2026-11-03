@@ -30,7 +30,7 @@ export const RawDataSwitcher = (props) => {
                     { name: 'Calibration Data', value: 'calibration_data' },
                     { name: 'Device Info', value: 'device_info' },
                 ]}
-                onChangeValue={(e) => updateViewState('rawDataType', e.detail)}
+                onChange={(e) => updateViewState('rawDataType', e.detail)}
                 defaultValue={{ name: 'Calibration Data', value: 'calibration_data' }}
                 value={viewState.rawDataType}
                 inline={true}
@@ -41,7 +41,7 @@ export const RawDataSwitcher = (props) => {
                 <div className='mt-8 ml-2'>
                     <CSwitch
                         value={viewState.tableView}
-                        onChangeValue={(e) => updateViewState('tableView', e.detail)}
+                        onChange={(e) => updateViewState('tableView', e.detail)}
                     >
                         Table View
                     </CSwitch>
@@ -52,7 +52,7 @@ export const RawDataSwitcher = (props) => {
                     <div className='mt-2 ml-2 flex flex-col'>
                         <CSwitch
                             value={viewState.qubitSwitch}
-                            onChangeValue={(e) => {
+                            onChange={(e) => {
                                 updateViewState('qubitSwitch', e.detail)
                             }}
                         >
@@ -62,7 +62,7 @@ export const RawDataSwitcher = (props) => {
                     <div className='mt-2 ml-2 flex flex-col'>
                         <CSwitch
                             value={!viewState.qubitSwitch}
-                            onChangeValue={(e) => {
+                            onChange={(e) => {
                                 updateViewState('qubitSwitch', !e.detail)
                             }}
                         >
