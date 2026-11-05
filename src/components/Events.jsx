@@ -98,7 +98,7 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleFilterChange 
             className='overflow-hidden!'
             value={isModalOpen}
             dismissable
-            onChange={event => setIsModalOpen(event.detail)}
+            onUpdateValue={event => setIsModalOpen(event.detail)}
         >
             <CCard style={{ 'overflow': 'scroll' }} className='overflow-scroll lg:overflow-hidden! max-h-[80vh]'>
                 <CCardTitle>Filters</CCardTitle>

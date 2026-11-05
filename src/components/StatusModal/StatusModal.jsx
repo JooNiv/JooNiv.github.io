@@ -27,7 +27,7 @@ export const StatusModal = (props) => {
             width={modalWidths[size]}
             value={props.isModalOpen}
             dismissable
-            onChange={e => props.setIsModalOpen(e.detail)}
+            onUpdateValue={e => props.setIsModalOpen(e.detail)}
         >
             <ModalContent {...props} />
         </CModal>

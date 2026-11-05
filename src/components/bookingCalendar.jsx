@@ -26,7 +26,7 @@ export const BookingModal = (props) => {
             width={modalWidths[size]}
             value={props.isModalOpen}
             dismissable
-            onChange={e => props.setIsModalOpen(e.detail)}
+            onUpdateValue={e => props.setIsModalOpen(e.detail)}
         >
 
             <CCard style={{ overflow: 'scroll' }} className='text-on-surface m-0! lg:mx-[100px] flex flex-col overflow-scroll lg:overflow-auto! max-h-[80vh] '>

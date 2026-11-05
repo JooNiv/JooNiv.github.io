@@ -192,7 +192,7 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleCheckboxChang
 
       value={isModalOpen}
       dismissable
-      onChange={event => setIsModalOpen(event.detail)}
+      onUpdateValue={event => setIsModalOpen(event.detail)}
     >
       <CCard style={{ "overflow": "scroll" }} className='overflow-scroll max-h-[80vh]'>
         <CCardTitle>Filters</CCardTitle>
