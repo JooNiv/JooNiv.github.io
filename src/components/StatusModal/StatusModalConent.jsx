@@ -12,7 +12,6 @@ import {
     CCard, CCardTitle, CCardContent, CCardActions, CButton, CTabs,
     CTab, CTabItems, CTabItem
 } from '@cscfi/csc-ui-react';
-import { object } from 'framer-motion/client';
 import { getDeviceMetricsConfig } from '../../config/deviceMetrics';
 
 import { API_BASE_URL } from '../../config/api';
