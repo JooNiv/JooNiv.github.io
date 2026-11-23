@@ -1,4 +1,5 @@
 ---
+import { themeToCss } from '@cscfi/csc-ui'
 import { constants } from '../lib/constants.js'
 import { isDevSite } from '../lib/env.js'
 
@@ -6,6 +7,8 @@ const { title, description, image } = Astro.props
 const pageUrl = new URL(Astro.url.pathname, Astro.site)
 const absolute = path => new URL(path, Astro.site).href
 const matomoUrl = import.meta.env.PUBLIC_MATOMO_URL
+// :root:root outranks tokens.css, which Astro links after this head content
+const brandTheme = themeToCss({ primary: '#004E84' }).replace(':root', ':root:root')
 ---
 <head>
   <title>{title}{constants.title_separator}{constants.title}</title>
@@ -22,6 +25,7 @@ const matomoUrl = import.meta.env.PUBLIC_MATOMO_URL
       media.addEventListener('change', () => { if (!stored()) apply() })
     })()
   </script>
+  <style is:inline set:html={brandTheme}></style>
   <meta name="description" content={description || constants.description}>
   {isDevSite && <meta name="robots" content="noindex, nofollow">}
 
