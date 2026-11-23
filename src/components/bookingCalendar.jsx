@@ -194,7 +194,6 @@ const BookingCalendar = (props) => {
                 <div className="flex flex-row flex-wrap gap-6">
                     <CTextField
                         className="min-[820px]:hidden block"
-                        label-on-top
                         hideMessage={true}
                         label={"Date"}
                         type={"date"}
