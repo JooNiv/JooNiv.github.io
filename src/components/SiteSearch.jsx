@@ -9,13 +9,6 @@ import { prependBaseURL } from '../utils/url';
 import { capitalizeFirstLetter } from "../utils/textUtils";
 import DOMPurify from 'dompurify';
 
-const styleArrow = {
-  "--_c-button-font-size": 14,
-  "--_c-button-min-width": 0,
-  "--_c-button-height": "auto",
-  "--_c-icon-color": "var(--c-primary)"
-};
-
 const TYPE_CATEGORIES = {
   page: 'general',
   blog: 'blogs',
@@ -127,7 +120,7 @@ const ResultArea = ({ paginationOptions, setOptions, results, type, href, id }) 
             <h1 className='mb-6 mr-3 text-xl font-bold'>{capitalizeFirstLetter(type)}</h1>
             {type !== "general" &&
               <a href={href} >
-                <CIcon style={styleArrow} className='pt-1 text-primary' path={mdiArrowRight} />
+                <CIcon className='pt-1 text-primary' path={mdiArrowRight} />
 
               </a>
             }

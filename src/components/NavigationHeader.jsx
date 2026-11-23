@@ -4,13 +4,6 @@ import { CButton, CIcon } from '@cscfi/csc-ui-react';
 import { mdiMagnify, mdiMenu, mdiWeatherNight, mdiWeatherSunny } from '@mdi/js';
 import { prependBaseURL } from '../utils/url';
 
-const style = {
-    "--_c-button-font-size": 16,
-    "--_c-button-min-width": 0,
-    "--_c-button-height": "auto",
-    "--_c-icon-color": "var(--c-on-surface)"
-};
-
 const normalizePath = path => (path || '').replace(/(index\.html)?\/?$/, '') || '/';
 
 const NavButton = props => {
@@ -25,7 +18,6 @@ const NavButton = props => {
         <CButton
             className="w-min"
             text
-            style={style}
             onClick={() => (window.location.href = props.href)}
         >
             <p className={styleClass}>{props.title}</p>
@@ -39,7 +31,6 @@ const NavSearchButton = props => {
         <CButton
             className="w-min"
             text
-            style={style}
             onClick={() => (window.location.href = props.href)}
         >
             <p className="text-on-surface text-sm py-2">{props.title}</p>
@@ -69,7 +60,7 @@ const ThemeToggle = () => {
     const label = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
 
     return (
-        <CButton className="w-min" text style={style} onClick={toggle} aria-label={label} title={label}>
+        <CButton className="w-min" text onClick={toggle} aria-label={label} title={label}>
             <CIcon className='text-on-surface' path={theme === 'dark' ? mdiWeatherSunny : mdiWeatherNight} />
         </CButton>
     );

@@ -76,11 +76,6 @@ h2 {
     fill: currentColor;
 }
 
-
-:root {
-    --c-font-family: 'Inter', sans-serif !important;
-}
-
 #blogView h1,
 #blogView h2,
 #blogView h3,
@@ -187,7 +182,6 @@ mjx-container {
     c-card-title {
         display: block;
         padding-inline: var(--fiqci-card-gap, 24px);
-        color: var(--c-text-system);
         font-size: 1rem;
         font-weight: 500;
         text-transform: uppercase;

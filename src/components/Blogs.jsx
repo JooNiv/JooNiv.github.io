@@ -7,23 +7,6 @@ import {
 import { BlogCardComponent } from './BlogCards';
 import { hideOldCalls } from '../utils/resourceCalls';
 
-const filterStyles = {
-    "--_c-checkbox-color": "var(--c-primary)",
-    "--_c-checkbox-background-color-hover": "var(--c-primary-subtle)",
-    "--_c-checkbox-color-active": "var(--c-primary)",
-}
-
-const dropdownStyles = {
-    "--c-select-active-color": "var(--c-primary)",
-    "--c-select-background-color": "rgba(204, 230, 241, 0)",
-    "--c-select-inactive-color": "var(--c-primary)",
-    "--c-select-option-background-color": "var(--c-primary)",
-    "--c-select-option-background-color-hover": "rgb(132, 9, 0)",
-    "--c-select-option-text-color": "var(--c-on-surface)",
-    "--c-select-placeholder-color": "var(--c-on-surface)",
-    "--c-select-text-color": "var(--c-on-surface)",
-};
-
 
 const BlogFilters = ({ filters, handleFilterChange }) => {
     const handleCheckboxChange = useCallback((category, option) => {
