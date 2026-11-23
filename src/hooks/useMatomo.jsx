@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 export const useMatomo = (matomoURL, MTMContainerId) => {
-  if ([matomoURL, MTMContainerId].every(elem => typeof elem !== 'undefined')) {
+  if (matomoURL && MTMContainerId) {
     const matomoSrc = new URL(`/js/container_${MTMContainerId}.js`, `https://${matomoURL}`)
 
     useEffect(() => {

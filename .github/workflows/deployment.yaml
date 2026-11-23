@@ -24,11 +24,11 @@ jobs:
       - name: Install Node.js packages
         run: npm ci # clean install
 
-      # GITHUB_REPOSITORY decides between the production (FiQCI/fiqci.github.io) and dev site build
+      # GITHUB_REPOSITORY decides between the production (FiQCI/fiqci.github.io) and dev site build; forks build without analytics
       - name: Build site using Astro
         env:
-          PUBLIC_MATOMO_URL: mwa-acf.2.rahtiapp.fi
-          PUBLIC_MATOMO_TAG_MANAGER_CONTAINER: jyLY2YKH
+          PUBLIC_MATOMO_URL: ${{ github.repository_owner == 'FiQCI' && 'mwa-acf.2.rahtiapp.fi' || '' }}
+          PUBLIC_MATOMO_TAG_MANAGER_CONTAINER: ${{ github.repository_owner == 'FiQCI' && 'jyLY2YKH' || '' }}
         run: npm run build
 
       - name: Upload artifact
