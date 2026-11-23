@@ -77,7 +77,6 @@ const BookingCalendar = (props) => {
     const [bookingsByDate, setBookingsByDate] = useState(groupBookingsByDate(bookingData))
     const [filter, setFilter] = useState("All")
     const [view, setView] = useState("List")
-    const [validDate, setValidDate] = useState(true)
 
     useEffect(() => {
         if (props.isModalOpen) {
@@ -145,16 +144,8 @@ const BookingCalendar = (props) => {
     const handleDateChange = (value) => {
         try {
             const newDate = parseISO(value.detail);
-            if (isNaN(newDate) || newDate.toString() === 'Invalid Date') {
-                setValidDate(false);
-                setSelectedDate(new Date());
-                return;
-            }
-            setSelectedDate(newDate);
-            setValidDate(true);
-        } catch {
-            setValidDate(false);
-        }
+            setSelectedDate(isNaN(newDate) ? new Date() : newDate);
+        } catch {}
     }
 
     // Helper to show tooltip (for both mouse and touch)
@@ -209,8 +200,6 @@ const BookingCalendar = (props) => {
                         type={"date"}
                         value={format(selectedDate, "yyyy-MM-dd")}
                         onChange={handleDateChange}
-                        validate={false}
-                        validation={"Invalid date"}
                     />
                     <div className="flex flex-row gap-2">
                         <CSelect
