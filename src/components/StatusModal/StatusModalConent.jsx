@@ -193,7 +193,7 @@ export const ModalContent = (props) => {
                         <strong>Last calibrated:</strong>{' '}
                         {calibrationLoading ? 'Loading…' : lastCalibrated || 'Not available'}
                     </p>
-                    <CButton className="self-end w-min" onClick={() => props.setIsModalOpen(false)} text>Close</CButton>
+                    <CButton className="self-end w-min" onClick={() => props.setIsModalOpen(false)} appearance="text">Close</CButton>
                 </div>
             </CCardActions>
         </CCard >

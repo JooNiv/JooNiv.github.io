@@ -83,13 +83,13 @@ export const CookieModal = props => {
                             className='grow text-white bg-[#0D2B53] hover:bg-blue-600'
                             no-radius
                             size="large"
-                            onClick={handleDeclineCookies} text>Decline
+                            onClick={handleDeclineCookies} appearance="text">Decline
                         </CButton>
                         <CButton
                             className='grow text-white bg-[#0D2B53] hover:bg-blue-600'
                             no-radius
                             size="large"
-                            onClick={handleAcceptCookies} text>Accept
+                            onClick={handleAcceptCookies} appearance="text">Accept
                         </CButton>
                     </div>
                 </CCardContent>
@@ -151,13 +151,13 @@ export const CookieModalManual = props => {
                                 className='grow text-white bg-[#0D2B53] hover:bg-blue-600'
                                 no-radius
                                 size="large"
-                                onClick={handleDeclineCookies} text>Decline
+                                onClick={handleDeclineCookies} appearance="text">Decline
                             </CButton>
                             <CButton
                                 className='grow text-white bg-[#0D2B53] hover:bg-blue-600'
                                 no-radius
                                 size="large"
-                                onClick={handleAcceptCookies} text>Accept
+                                onClick={handleAcceptCookies} appearance="text">Accept
                             </CButton>
                         </div>
                     </CCardContent>

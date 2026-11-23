@@ -28,7 +28,7 @@
   --c-primary-hover: var(--c-primary-50);
 }
 
-[data-theme='dark'] c-button:not([ghost], [text], [outlined], [danger], [inverted]) {
+[data-theme='dark'] c-button:is(:not([appearance]), [appearance='filled']):not([variant='danger'], [inverted]) {
   --c-primary: #004E84;
   --c-on-primary: var(--c-white);
   --c-primary-hover: var(--color-blue-600);

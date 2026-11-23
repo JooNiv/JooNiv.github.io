@@ -27,7 +27,7 @@ export const MetricSwitcher = (props) => {
                     </div>
                     
                     <CSelect
-                        hideDetails={true}
+                        hideMessage={true}
                         className='py-2'
                         clearable
                         value={metricsState.qubitMetric}
@@ -156,7 +156,7 @@ export const MetricSwitcher = (props) => {
                 <div className='mt-4'>
                     <p className='font-bold mb-[2px]'>Coupler Metric:</p>
                     <CSelect
-                        hideDetails={true}
+                        hideMessage={true}
                         className='py-2'
                         clearable
                         value={metricsState.couplerMetric}

@@ -24,7 +24,7 @@ export const RawDataSwitcher = (props) => {
         <div>
             <p className='font-bold mb-[2px]'>Data Type:</p>
             <CRadioGroup className='text-sm'
-                hideDetails={true}
+                hideMessage={true}
                 onChange={(e) => updateViewState('rawDataType', e.detail)}
                 value={viewState.rawDataType}
                 inline={true}

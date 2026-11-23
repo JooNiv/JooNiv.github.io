@@ -10,7 +10,7 @@ export const StatusPillLoading = () => (
 
 export const LoadingBlock = (props) => (
   <div className={`flex items-center justify-center gap-3 py-8 ${props.className || ''}`}>
-    <CSpinner size={24} width={2} />
+    <CSpinner size={24} thickness={2} />
     <p className='text-[14px] text-gray-600 dark:text-on-surface-muted'>{props.label || 'Loading…'}</p>
   </div>
 )

@@ -53,9 +53,8 @@ const FilterCategory = ({ category, options, handleCheckboxChange }) => (
         <h3 className='font-bold mb-[2px]'>{category}</h3>
         {Object.keys(options).map(option => ( //generate a chekcbox for each filter category
             <CCheckbox
-                hide-details={true}
                 key={option}
-                hideDetails
+                hideMessage
                 checked={options[option]}
                 onChange={() => handleCheckboxChange(category, option)}
             >
@@ -71,7 +70,7 @@ const FilterTheme = ({ selectedTheme, handleChangeTheme }) => (
     <div>
         <p className='font-bold mb-[2px]'>Theme</p>
         <CSelect
-            hideDetails={true}
+            hideMessage={true}
             className='py-2'
             clearable
             value={selectedTheme}
@@ -107,7 +106,7 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleFilterChange 
                     />
                 </CCardContent>
                 <CCardActions justify='end'>
-                    <CButton onClick={() => setIsModalOpen(false)} text>Close</CButton>
+                    <CButton onClick={() => setIsModalOpen(false)} appearance="text">Close</CButton>
                 </CCardActions>
             </CCard>
         </CModal>

@@ -99,8 +99,8 @@ const ToolCarousel = ({ tools }) => {
       {!edges.isLocked && (
         // relative z-10 keeps the buttons above the Swiper's shadow padding, which overlaps this row
         <div className='relative z-10 flex justify-start gap-2'>
-          <CIconButton ghost size='small' path={mdiChevronLeft} aria-label='Previous tools' disabled={edges.isBeginning} onClick={() => swiper?.slidePrev()} />
-          <CIconButton ghost size='small' path={mdiChevronRight} aria-label='Next tools' disabled={edges.isEnd} onClick={() => swiper?.slideNext()} />
+          <CIconButton appearance="ghost" size='small' path={mdiChevronLeft} aria-label='Previous tools' disabled={edges.isBeginning} onClick={() => swiper?.slidePrev()} />
+          <CIconButton appearance="ghost" size='small' path={mdiChevronRight} aria-label='Next tools' disabled={edges.isEnd} onClick={() => swiper?.slideNext()} />
         </div>
       )}
     </div>
@@ -201,7 +201,7 @@ export const ServiceStatus = (props) => {
       <div className='flex flex-col sm:flex-row gap-4 sm:gap-20'>
         <h2 className='text-on-surface'>Devices</h2>
         <CSelect
-          hideDetails={true}
+          hideMessage={true}
           label={"Sort"}
           className='w-40'
           value={sort}
@@ -217,7 +217,7 @@ export const ServiceStatus = (props) => {
         />
         <CButton
           className='w-min self-start sm:self-center'
-          ghost
+          appearance="ghost"
           loading={statusLoading}
           onClick={refetchStatus}
         >

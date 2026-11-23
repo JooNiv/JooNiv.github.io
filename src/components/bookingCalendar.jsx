@@ -23,7 +23,7 @@ export const BookingModal = (props) => {
                 </CCardContent>
                 <CCardActions>
                     <div className='flex flex-col sm:flex-row sm:justify-end w-full gap-4'>
-                        <CButton className="self-end w-min" onClick={() => props.setIsModalOpen(false)} text>Close</CButton>
+                        <CButton className="self-end w-min" onClick={() => props.setIsModalOpen(false)} appearance="text">Close</CButton>
                     </div>
                 </CCardActions>
             </CCard >
@@ -204,7 +204,7 @@ const BookingCalendar = (props) => {
                     <CTextField
                         className="min-[820px]:hidden block"
                         label-on-top
-                        hideDetails={true}
+                        hideMessage={true}
                         label={"Date"}
                         type={"date"}
                         value={format(selectedDate, "yyyy-MM-dd")}
@@ -214,7 +214,7 @@ const BookingCalendar = (props) => {
                     />
                     <div className="flex flex-row gap-2">
                         <CSelect
-                            hideDetails={true}
+                            hideMessage={true}
                             label={"Device"}
                             className='w-24 -py-[2px]'
                             value={filter}
@@ -229,7 +229,7 @@ const BookingCalendar = (props) => {
                     </div>
                     <div className="flex flex-row gap-2">
                         <CSelect
-                            hideDetails={true}
+                            hideMessage={true}
                             label={"View"}
                             className='w-24 -py-[2px]'
                             

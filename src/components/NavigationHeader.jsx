@@ -17,7 +17,7 @@ const NavButton = props => {
     return (
         <CButton
             className="w-min"
-            text
+            appearance="text"
             onClick={() => (window.location.href = props.href)}
         >
             <p className={styleClass}>{props.title}</p>
@@ -30,7 +30,7 @@ const NavSearchButton = props => {
     return (
         <CButton
             className="w-min"
-            text
+            appearance="text"
             onClick={() => (window.location.href = props.href)}
         >
             <p className="text-on-surface text-sm py-2">{props.title}</p>
@@ -60,7 +60,7 @@ const ThemeToggle = () => {
     const label = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
 
     return (
-        <CButton className="w-min" text onClick={toggle} aria-label={label} title={label}>
+        <CButton className="w-min" appearance="text" onClick={toggle} aria-label={label} title={label}>
             <CIcon className='text-on-surface' path={theme === 'dark' ? mdiWeatherSunny : mdiWeatherNight} />
         </CButton>
     );

@@ -78,7 +78,7 @@ const SearchBar = ({ setResults, setQuery, query }) => {
         <input onChange={handleSearchBar} className="w-full focus:outline-hidden" placeholder="Search..." type="text" id="search-box" name="query" value={query} />
       </form>
       <span className='flex mx-3 text-on-surface cursor-pointer' onClick={() => handleClose()}><CIcon size={24} path={mdiClose} /></span>
-      <span className='flex mr-3'><CButton onClick={handleSubmit} size='small' ghost>Search</CButton></span>
+      <span className='flex mr-3'><CButton onClick={handleSubmit} size='small' appearance="ghost">Search</CButton></span>
     </div>
   )
 
@@ -162,8 +162,7 @@ const Filters = ({ filters, handleCheckboxChange }) => {
         {Object.keys(filters).map(option => (
           <CCheckbox
             className='flex flex-col'
-            hide-details={true}
-            hideDetails
+            hideMessage
             key={option}
             checked={filters[option]}
             onChange={() => handleCheckboxChange(option)}
@@ -193,7 +192,7 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleCheckboxChang
           <Filters filters={filters} handleCheckboxChange={handleCheckboxChange} />
         </CCardContent>
         <CCardActions justify='end'>
-          <CButton onClick={() => setIsModalOpen(false)} text>Close</CButton>
+          <CButton onClick={() => setIsModalOpen(false)} appearance="text">Close</CButton>
         </CCardActions>
       </CCard>
     </CModal>
