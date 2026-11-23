@@ -63,13 +63,11 @@ export const CookieModal = props => {
         <CModal
             aria-label="Cookie consent"
             key={isModalOpen ? 'open' : 'closed'}
-            style={{ 'overflow': 'auto' }}
-            className='overflow-hidden!'
             value={isModalOpen}
             dismissable
             onUpdateValue={() => clickOutside()}
         >
-            <CCard style={{ 'overflow': 'auto' }} className='overflow-auto max-h-[85vh]'>
+            <CCard className='overflow-auto max-h-[85vh]'>
                 <CCardTitle className='text-on-surface font-bold' >Cookie consent</CCardTitle>
                 <CCardContent className='p-8'>
                     <h3 className='text-on-surface text-[32px]'>{props.title}</h3>
@@ -134,13 +132,11 @@ export const CookieModalManual = props => {
             <CModal
                 aria-label="Cookie consent"
                 key={isModalOpen ? 'open' : 'closed'}
-                style={{ 'overflow': 'scroll' }}
-                className='overflow-hidden!'
                 value={isModalOpen}
                 dismissable
                 onUpdateValue={() => closeModal()}
             >
-                <CCard style={{ 'overflow': 'scroll' }} className='overflow-scroll scroll-smooth max-h-[85vh]'>
+                <CCard className='overflow-scroll scroll-smooth max-h-[85vh]'>
                     <CCardTitle className='text-on-surface font-bold' >Cookie consent</CCardTitle>
                     <CCardContent className='p-8'>
                         <h3 className='text-on-surface text-[32px]'>{props.title}</h3>

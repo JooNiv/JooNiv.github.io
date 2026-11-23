@@ -4,12 +4,6 @@ import { CButton, CIcon } from '@cscfi/csc-ui-react';
 import { mdiArrowRight, mdiArrowDown, mdiOpenInNew } from '@mdi/js';
 import { prependBaseURL, isExternal, isAnchor } from '../utils/url';
 
-const style = {
-    "--c-primary": "#0D2B53",
-    "--c-primary-hover": "var(--color-blue-600)",
-    "--spacing-toolbar": "52px",
-};
-
 const getIconPath = href => isExternal(href)
     ? mdiOpenInNew
     : isAnchor(href)
@@ -18,24 +12,23 @@ const getIconPath = href => isExternal(href)
 
 const ContentButton = props => {
     const styleClass = "text-white text-sm sm:text-md py-3 wrap-break-word"
+    const buttonColors = "[--c-primary:#0D2B53]! [--c-primary-hover:var(--color-blue-600)]!"
 
     return (
         <div>
             <CButton
-                className='hidden mb-[6px] sm:block w-min ml-0 mt-[10px] md:ml-0 mr-[16px] sm:ml-0 bg-[#0D2B53] hover:bg-blue-600'
+                className={`hidden mb-[6px] sm:block w-min ml-0 mt-[10px] md:ml-0 mr-[16px] sm:ml-0 ${buttonColors}`}
                 no-radius
                 size="large"
-                style={style}
                 onClick={() => (window.location.href = prependBaseURL(props.href))}
             >
                 <p className={styleClass}>{props.title}</p>
                 <CIcon path={getIconPath(props.href)}/>
             </CButton>
             <CButton
-                className='flex flex-1 mb-[6px] sm:hidden w-min ml-0 mt-[10px] mr-0 md:ml-0 bg-[#0D2B53] hover:bg-blue-600'
+                className={`flex flex-1 mb-[6px] sm:hidden w-min ml-0 mt-[10px] mr-0 md:ml-0 ${buttonColors}`}
                 no-radius
                 size="default"
-                style={style}
                 onClick={() => (window.location.href = prependBaseURL(props.href))}
             >
                 <p className={styleClass}>{props.title}</p>

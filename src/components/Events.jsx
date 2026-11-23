@@ -94,13 +94,11 @@ const FilterModal = ({ isModalOpen, setIsModalOpen, filters, handleFilterChange 
         <CModal
             aria-label="Filters"
             key={isModalOpen ? 'open' : 'closed'}
-            style={{ 'overflow': 'scroll' }}
-            className='overflow-hidden!'
             value={isModalOpen}
             dismissable
             onUpdateValue={event => setIsModalOpen(event.detail)}
         >
-            <CCard style={{ 'overflow': 'scroll' }} className='overflow-scroll lg:overflow-hidden! max-h-[80vh]'>
+            <CCard className='overflow-scroll lg:overflow-hidden! max-h-[80vh]'>
                 <CCardTitle>Filters</CCardTitle>
                 <CCardContent>
                     <EventFilters

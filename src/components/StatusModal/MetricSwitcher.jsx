@@ -125,34 +125,8 @@ export const MetricSwitcher = (props) => {
                                                 step="0.01"
                                                 value={metricsState.thresholdQubit}
                                                 onChange={(e) => updateMetricsState('thresholdQubit', parseFloat(e.target.value))}
-                                                className="absolute top-0 left-0 w-full h-full opacity-70 cursor-pointer slider"
-                                                style={{
-                                                    background: 'transparent',
-                                                    appearance: 'none',
-                                                    WebkitAppearance: 'none'
-                                                }}
+                                                className="absolute top-0 left-0 w-full h-full opacity-70 cursor-pointer bg-transparent appearance-none slider"
                                             />
-                                            <style>{`
-                                                                            .slider::-webkit-slider-thumb {
-                                                                                appearance: none;
-                                                                                width: 20px;
-                                                                                height: 24px;
-                                                                                background: #333;
-                                                                                border: 2px solid #fff;
-                                                                                border-radius: 50%;
-                                                                                cursor: pointer;
-                                                                                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-                                                                            }
-                                                                            .slider::-moz-range-thumb {
-                                                                                width: 20px;
-                                                                                height: 20px;
-                                                                                background: #333;
-                                                                                border: 2px solid #fff;
-                                                                                border-radius: 50%;
-                                                                                cursor: pointer;
-                                                                                box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-                                                                            }
-                                                                        `}</style>
                                         </div>
                                         <div className="flex justify-between text-sm mb-1 w-full">
                                             <span>
@@ -279,12 +253,7 @@ export const MetricSwitcher = (props) => {
                                                 step="0.01"
                                                 value={metricsState.thresholdCoupler}
                                                 onChange={(e) => updateMetricsState('thresholdCoupler', parseFloat(e.target.value))}
-                                                className="absolute top-0 left-0 w-full h-full opacity-70 cursor-pointer slider"
-                                                style={{
-                                                    background: 'transparent',
-                                                    appearance: 'none',
-                                                    WebkitAppearance: 'none'
-                                                }}
+                                                className="absolute top-0 left-0 w-full h-full opacity-70 cursor-pointer bg-transparent appearance-none slider"
                                             />
                                         </div>
                                         <div className="flex justify-between text-sm mb-1 w-full">

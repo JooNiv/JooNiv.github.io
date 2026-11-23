@@ -3,33 +3,20 @@ import Calendar from "react-calendar";
 import { format, parseISO } from "date-fns";
 import { CModal, CCard, CCardTitle, CCardContent, CSelect, CCardActions, CButton, CTextField } from '@cscfi/csc-ui-react';
 import { capitalizeFirstLetter } from "../utils/textUtils";
-import { useWindowSize } from "../utils/modalUtils";
 
 export const BookingModal = (props) => {
     const { bookingData } = props;
 
-    const { width } = useWindowSize();
-    let size;
-
-    if (width >= 2600) size = 'large';
-    else if (width >= 768) size = 'medium';
-    else size = 'small';
-
-    const modalWidths = { small: '90vw', medium: '1400px', large: '50vw' }
-
     return (
         <CModal
             aria-label="Reservations"
-            key={size}
-            id={`booking-modal-${size}`}
-            style={{ overflow: 'scroll', "--fiqci-modal-width": modalWidths[size] }}
-            width={modalWidths[size]}
+            className="modal-wide"
             value={props.isModalOpen}
             dismissable
             onUpdateValue={e => props.setIsModalOpen(e.detail)}
         >
 
-            <CCard style={{ overflow: 'scroll' }} className='text-on-surface m-0! lg:mx-[100px] flex flex-col overflow-scroll lg:overflow-auto! max-h-[80vh] '>
+            <CCard className='text-on-surface m-0! lg:mx-[100px] flex flex-col overflow-scroll lg:overflow-auto! max-h-[80vh] '>
                 <CCardTitle className="font-bold! text-on-surface">{props.name}</CCardTitle>
                 <CCardContent className="p-0! pb-0 sm:pb-0">
                     <BookingCalendar bookingData={bookingData} />
@@ -353,52 +340,29 @@ const BookingCalendar = (props) => {
                             <div className="flex flex-row">
                                 {/* Hour labels on the left */}
                                 <div className="flex flex-col mr-2 justify-between" >
-                                    <div key={0} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
-                                        {"00".toString().padStart(2, '0')}
-                                    </div>
-                                    <div key={6} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
-                                        {"06".toString().padStart(2, '0')}
-                                    </div>
-                                    <div key={12} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
-                                        {"12".toString().padStart(2, '0')}
-                                    </div>
-                                    <div key={18} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
-                                        {"18".toString().padStart(2, '0')}
-                                    </div>
-                                    <div key={23} style={{ height: '7px', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.85rem', color: 'light-dark(#374151, var(--c-on-surface-muted))', paddingRight: 4 }}>
-                                        {"23".toString().padStart(2, '0')}
-                                    </div>
+                                    {[0, 6, 12, 18, 23].map(hour => (
+                                        <div key={hour} className="h-[7px] flex items-center justify-end pr-1 text-[0.85rem] text-[color:light-dark(#374151,var(--c-on-surface-muted))]">
+                                            {String(hour).padStart(2, '0')}
+                                        </div>
+                                    ))}
                                 </div>
                                 {/* Responsive grid: 24 rows (hours), 60 cols (minutes) */}
                                 <div className="overflow-x-auto flex-1" ref={gridRef}>
-                                    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                                    <div className="flex flex-col w-full">
                                         {Array.from({ length: 24 }).map((_, hour) => (
-                                            <div key={hour} style={{ display: 'flex', width: '100%' }}>
+                                            <div key={hour} className="flex w-full">
                                                 {Array.from({ length: 60 }).map((_, min) => {
                                                     const i = hour * 60 + min;
                                                     const bookings = reservedMinutes[i];
-                                                    let background;
-                                                    if (bookings.length === 0) {
-                                                        background = 'light-dark(#e5e7eb, var(--c-slate-700))';
-                                                    } else {
-                                                        background = '#f87171';
-                                                    }
                                                     const tooltipContent = bookings.length
                                                         ? bookings.map(b => `${capitalizeFirstLetter(b.device)}: ${capitalizeFirstLetter(b.type)} (${format(parseISO(b.start_time), "HH:mm")}-${format(parseISO(b.end_time), "HH:mm")})`).join('\n')
                                                         : `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
                                                     return (
                                                         <div
                                                             key={min}
-                                                            style={{
-                                                                background,
-                                                                flex: '1 1 0',
-                                                                minWidth: 0,
-                                                                aspectRatio: '1/1',
-                                                                height: '10px',
-                                                                cursor: bookings.length ? 'pointer' : 'default',
-                                                                position: 'relative',
-                                                                borderTop: '1px solid var(--c-surface)',
-                                                            }}
+                                                            className={`relative flex-1 min-w-0 aspect-square h-[10px] border-t border-t-(--c-surface) ${bookings.length
+                                                                ? 'bg-[#f87171] cursor-pointer'
+                                                                : 'bg-[color:light-dark(#e5e7eb,var(--c-slate-700))] cursor-default'}`}
                                                             onMouseEnter={bookings.length ? (e) => { setSelectedBooking(bookings.length === 1 ? bookings[0] : bookings); showTooltip(e, tooltipContent); } : undefined}
                                                             onMouseLeave={() => { setSelectedBooking(null); hideTooltip(); }}
                                                             onTouchStart={bookings.length ? (e) => { setSelectedBooking(bookings.length === 1 ? bookings[0] : bookings); showTooltip(e, tooltipContent); } : undefined}
@@ -413,23 +377,8 @@ const BookingCalendar = (props) => {
                                     {tooltip.visible && (
                                         <div
                                             id="booking-tooltip-overlay"
-                                            style={{
-                                                position: 'fixed',
-                                                left: tooltip.x + 10,
-                                                top: tooltip.y + 10,
-                                                zIndex: 9999,
-                                                background: 'rgba(34, 34, 34, 0.97)',
-                                                color: '#fff',
-                                                padding: '10px 14px',
-                                                borderRadius: '8px',
-                                                boxShadow: '0 4px 16px rgba(0,0,0,0.18)',
-                                                fontSize: '0.95rem',
-                                                whiteSpace: 'pre-line',
-                                                pointerEvents: 'auto',
-                                                maxWidth: '80vw',
-                                                minWidth: '120px',
-                                                wordBreak: 'break-word',
-                                            }}
+                                            className="fixed z-[9999] py-[10px] px-[14px] rounded-[8px] bg-[rgba(34,34,34,0.97)] text-white text-[0.95rem] shadow-[0_4px_16px_rgba(0,0,0,0.18)] whitespace-pre-line wrap-break-word pointer-events-auto min-w-[120px] max-w-[80vw]"
+                                            style={{ left: tooltip.x + 10, top: tooltip.y + 10 }}
                                         >
                                             {tooltip.content}
                                         </div>
